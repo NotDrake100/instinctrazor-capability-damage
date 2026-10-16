@@ -38,3 +38,13 @@ bash run.sh          # venv, transformers 5.9 (InstinctRazor's pinned version, f
 - **Untested path:** the transformers 5.9 / CUDA path has not been run. `bigrun.py` asserts that expert tensors were found, so a version that exposes per-expert Linears fails fast instead of silently skipping the experts.
 - **Bit accounting:** the effective-bits number double-counts tied embeddings. Qwen3-30B does not tie, so it is unaffected.
 - **Noise:** reloading and re-quantizing the same spec gave different scores at n=40 on CPU bf16 (smoke: 37.5% vs 45% on add3). Trust the paired comparisons at n≥200 and on held-out items, not single small-n numbers.
+
+## Budget scaling (Qwen3 run, 2026-10-16) — what was actually run
+- **Budget:** $4.39 Vast credit, hard cap on spend $3.51 (20% margin). OLMoE was dropped (Qwen3 only).
+- **Machine:** 1x A100 80GB PCIe (Vast offer 48064008, Japan), $1.069/h incl. 150 GB disk, $0.004/GB download, 250 GB RAM. H100 offers were $2.6–3.5/h (plus ~$0.04/GB download on most), which would have bought ~1 h; the cheaper A100 SXM4/PCIe offers seen earlier disappeared before renting. This offer is marked "deverified" by Vast but has reliability 0.999.
+- **Discovery items:** `--n 200` (was 400) correct items kept per suite, from the same 600-item pools (CounterFact pool 3000). All six suites kept 200.
+- **Held-out items:** `--hpool 1000` (new flag) so the held-out pool is 1000 generated items per suite; kept up to 2n = 400 correct per suite (target ≥ 200 per suite).
+- **Per-layer scan:** all 48 layers individually, ordered layer 0 first, then strided (0,4,8,…,1,5,…) so that if the new `--scan-budget-min 75` (live-adjustable via `out/<tag>/SCANMIN`) cut the scan, the scanned layers would still be spread evenly. Measured ~37 s/layer, so the full scan fits.
+- **Unchanged:** quantization recipe (INT3 experts / INT4 attention, group 128, 16-step clip search), variants (flat, protect L0, protect worst-1, protect worst-2), `--bs 100`.
+- **Loader:** `device_map="cuda"` (stream weights straight to GPU) instead of loading to CPU then `.to()`.
+- **run.sh fix:** `ls` of a missing patch glob returned non-zero under `set -o pipefail` and killed the script silently; fixed with `|| true` and an idempotent apply.

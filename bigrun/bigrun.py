@@ -8,6 +8,8 @@ ap.add_argument("--model", required=True); ap.add_argument("--tag", required=Tru
 ap.add_argument("--n", type=int, default=400, help="max kept items per skill (discovery); held-out uses up to 2x")
 ap.add_argument("--pool", type=int, default=600); ap.add_argument("--fact-pool", type=int, default=3000)
 ap.add_argument("--bs", type=int, default=64); ap.add_argument("--device", default="cuda")
+ap.add_argument("--hpool", type=int, default=0, help="held-out generation pool per suite (0 = --pool)")
+ap.add_argument("--scan-budget-min", type=float, default=0, help="stop per-layer scan after this many minutes (layer 0 always first, rest interleaved)")
 ap.add_argument("--clip-steps", type=int, default=16); ap.add_argument("--layers", default="", help="subset for smoke, e.g. 0,1")
 a = ap.parse_args()
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -23,7 +25,7 @@ tok = AutoTokenizer.from_pretrained(a.model); tok.padding_side = "left"
 if tok.pad_token is None: tok.pad_token = tok.eos_token
 dkw = {"dtype": torch.bfloat16} if int(transformers.__version__.split(".")[0]) >= 5 else {"torch_dtype": torch.bfloat16}
 def load():
-    m = AutoModelForCausalLM.from_pretrained(a.model, **dkw).to(a.device).eval()
+    m = AutoModelForCausalLM.from_pretrained(a.model, device_map=a.device, **dkw).eval()  # stream straight to GPU (host RAM < weights)
     ad = MA.get_adapter(m.config); MQ.set_active_adapter(ad); MQ.set_clip_search(a.clip_steps); return m, ad
 model, ad = load(); L = model.config.num_hidden_layers
 nE = sum(1 for _ in MQ.iter_expert_tensors(model)); nLin = sum(1 for _ in MQ.iter_quant_linears(model))
@@ -83,7 +85,8 @@ log("orig pool acc", {s: round(float(v.mean()), 3) for s, v in full.items()}, "k
 SK = {s: v for s, v in SK.items() if len(items[s]) >= 30}  # drop suites the base model can't do
 save("items.json", {"items": {s: items[s] for s in SK}, "orig_pool": {s: full[s].tolist() for s in SK}})
 # ---------- per-layer scan (quantize only layer l) ----------
-layers = [int(x) for x in a.layers.split(",")] if a.layers else list(range(L))
+layers = [int(x) for x in a.layers.split(",")] if a.layers else [0] + [l for o in range(4) for l in range(o, L, 4) if l != 0]  # 0 first, then interleaved strides so a budget cut leaves even coverage
+T_SCAN = time.time()
 per = {s: {} for s in SK}
 for l in layers:
     t1 = time.time(); pre = f"layers.{l}."
@@ -98,6 +101,10 @@ for l in layers:
     for p, b in bak: p.data.copy_(b)
     del bak; log(f"layer {l}: " + " ".join(f"{s}={r[s].mean():.3f}" for s in SK), f"{time.time()-t1:.0f}s")
     save("perlayer_items.json", per)
+    try: a.scan_budget_min = float(open(os.path.join(OUT, "SCANMIN")).read())  # live-adjustable budget
+    except Exception: pass
+    if a.scan_budget_min and time.time() - T_SCAN > a.scan_budget_min * 60: log(f"scan budget hit after {len(per[next(iter(SK))])} layers"); break
+layers = sorted(per[next(iter(SK))])
 # ---------- full recipe + protection variants ----------
 md = {l: np.mean([1 - np.mean(per[s][l]) for s in SK]) for l in layers}
 worst = sorted(md, key=md.get, reverse=True)
@@ -114,6 +121,7 @@ for k, prot in variants.items():
 # ---------- held-out (fresh items) for flat vs best protection ----------
 best = max([k for k in res if k != "flat"], key=lambda k: np.mean([np.mean(res[k]["kept"][s]) for s in SK]) - 0.0 * res[k]["bits"])
 del model; model, ad = load()
+if a.hpool: a.pool = a.hpool
 H = suites(1, (a.fact_pool, 2 * a.fact_pool)); H = {s: H[s] for s in SK}
 hf = evalset(H, {s: H[s][0] for s in H}); hitems = {s: [it for it, ok in zip(H[s][0], hf[s]) if ok][:2*a.n] for s in H}
 ho = {"best_variant": best, "n": {s: len(v) for s, v in hitems.items()}, "items": hitems}
