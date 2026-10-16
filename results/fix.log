@@ -1,0 +1,8 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.12it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it]
+adapter GraniteMoeAdapter
+baseline_flat bits=3.127 {'arith': 0.81, 'fact': 0.402, 'icl_kv': 0.725}
+embed_bf16 bits=4.000 {'arith': 0.785, 'fact': 0.505, 'icl_kv': 0.865}
+layer0_protected bits=3.191 {'arith': 0.91, 'fact': 0.546, 'icl_kv': 0.86}
+embed_bf16+layer0 bits=4.064 {'arith': 0.92, 'fact': 0.577, 'icl_kv': 0.91}
+embed_bf16+layers0-2_int4exp bits=4.109 {'arith': 0.88, 'fact': 0.536, 'icl_kv': 0.93}
+all_experts_int4 bits=4.000 {'arith': 0.92, 'fact': 0.546, 'icl_kv': 0.7}

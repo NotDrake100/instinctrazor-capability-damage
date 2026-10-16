@@ -1,0 +1,5 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.36s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.50it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.30it/s]
+adapter GraniteMoeAdapter
+heldout n {'arith': 299, 'fact': 239, 'icl_kv': 268}
+flat 3.127 {'arith': 0.829, 'fact': 0.364, 'icl_kv': 0.78}
+protect_L0 3.191 {'arith': 0.883, 'fact': 0.573, 'icl_kv': 0.963}

@@ -1,0 +1,82 @@
+From 5c62173339f1f197af8cc78ae431b1b4799aa45d Mon Sep 17 00:00:00 2001
+From: Archit Thorat <108216787+NotDrake100@users.noreply.github.com>
+Date: Fri, 16 Oct 2026 15:39:57 +0530
+Subject: [PATCH] quant_save: --protect-layers keeps chosen decoder layers
+ (default experts INT4, attn BF16)
+
+---
+ src/quant/model_adapters.py | 24 ++++++++++++++++++++++--
+ src/quant/quant_save.py     |  7 ++++++-
+ 2 files changed, 28 insertions(+), 3 deletions(-)
+
+diff --git a/src/quant/model_adapters.py b/src/quant/model_adapters.py
+index d807f66..39e06df 100644
+--- a/src/quant/model_adapters.py
++++ b/src/quant/model_adapters.py
+@@ -164,9 +164,15 @@ class ModelAdapter:
+         return (f"{base}.gate_up_proj", f"{base}.down_proj")
+ 
+     # ---- flat (uniform) spec for quant_save ----
+-    def flat_spec(self, model, expert_bits, linear_bits, group):
++    def flat_spec(self, model, expert_bits, linear_bits, group, protect_layers=(), protect_expert_bits=4.0,
++                  protect_linear_bits=16):
+         """The shipped uniform recipe: experts @ expert_bits, backbone @ linear_bits.
+-        Fused path is byte-identical to the original quant_save AllocSpec."""
++        Fused path is byte-identical to the original quant_save AllocSpec when protect_layers is empty.
++        protect_layers: decoder layer indices kept at higher precision (experts @ protect_expert_bits,
++        attn/backbone linears @ protect_linear_bits). Layer 0 is the measured hot spot on granitemoe."""
++        if protect_layers:
++            return self._protected_spec(model, expert_bits, linear_bits, group, set(protect_layers),
++                                        protect_expert_bits, protect_linear_bits)
+         if not self.include_expert_linears:
+             # fused experts ride iter_expert_tensors via default_expert_bits (byte-identical to original)
+             return MQ.AllocSpec(default_expert_bits=expert_bits, default_linear_bits=linear_bits, group=group)
+@@ -178,6 +184,20 @@ class ModelAdapter:
+                             default_expert_bits=expert_bits, group=group)
+ 
+ 
++    def _protected_spec(self, model, expert_bits, linear_bits, group, prot, peb, plb):
++        eb = {n: torch.full((p.shape[0],), float(peb if self.layer_idx_of(n) in prot else expert_bits))
++              for n, p in self.iter_expert_tensors(model)}
++        lb = {}
++        for n, m in self.iter_quant_linears(model):
++            is_exp = self.include_expert_linears and self.classify_linear(n) == "expert"
++            if self.layer_idx_of(n) in prot:
++                lb[n] = peb if is_exp else plb
++            else:
++                lb[n] = expert_bits if is_exp else linear_bits
++        return MQ.AllocSpec(expert_bits=eb, linear_bits=lb, default_linear_bits=linear_bits,
++                            default_expert_bits=expert_bits, group=group)
++
++
+ # --------------------------------------------------------------------------- registered adapters
+ # Quant coverage is broad because transformers 5.x batches almost every MoE family into FUSED 3D expert
+ # tensors named `...experts.gate_up_proj` / `...experts.down_proj` — matched by the base fused_expert_suffixes.
+diff --git a/src/quant/quant_save.py b/src/quant/quant_save.py
+index d1807cb..10d8523 100644
+--- a/src/quant/quant_save.py
++++ b/src/quant/quant_save.py
+@@ -16,6 +16,9 @@ def main():
+     ap.add_argument("--linear-bits", type=float, default=4.0)
+     ap.add_argument("--group", type=int, default=128)
+     ap.add_argument("--clip-steps", type=int, default=0, help="MSE-optimal clip search steps (0=absmax)")
++    ap.add_argument("--protect-layers", default="", help="comma list of decoder layers kept higher-precision, e.g. 0")
++    ap.add_argument("--protect-expert-bits", type=float, default=4.0)
++    ap.add_argument("--protect-linear-bits", type=float, default=16)
+     ap.add_argument("--out", required=True)
+     ap.add_argument("--max-mem-gib", type=int, default=72)
+     args = ap.parse_args()
+@@ -31,7 +34,9 @@ def main():
+         print(f"[quant_save] MSE clip search ENABLED ({args.clip_steps} steps)", flush=True)
+     # Flat uniform recipe: experts @ expert_bits, backbone @ linear_bits. The adapter routes
+     # separate-expert (non-fused) models' experts through the linear loop at expert_bits.
+-    spec = adapter.flat_spec(model, args.expert_bits, args.linear_bits, args.group)
++    prot = tuple(int(x) for x in args.protect_layers.split(",") if x.strip())
++    spec = adapter.flat_spec(model, args.expert_bits, args.linear_bits, args.group, protect_layers=prot,
++                             protect_expert_bits=args.protect_expert_bits, protect_linear_bits=args.protect_linear_bits)
+     eb = MQ.effective_bits(model, spec)
+     avg = float(eb["avg_bits_all"])
+     total_b = sum(p.numel() for p in model.parameters()) / 1e9
+-- 
+2.47.3
+

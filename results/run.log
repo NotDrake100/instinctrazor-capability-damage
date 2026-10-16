@@ -1,0 +1,32 @@
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:50<00:50, 50.24s/it]Downloading shards: 100%|██████████| 2/2 [00:59<00:00, 26.13s/it]Downloading shards: 100%|██████████| 2/2 [00:59<00:00, 29.74s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.92s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.43s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.65s/it]
+adapter GraniteMoeAdapter
+orig pool acc {'arith': 0.9933333333333333, 'fact': 0.13857142857142857, 'icl_kv': 0.9566666666666667}
+layer 0: arith=1.000 fact=0.794 icl_kv=0.995 61s
+layer 1: arith=1.000 fact=0.866 icl_kv=0.950 52s
+layer 2: arith=1.000 fact=0.918 icl_kv=0.980 50s
+layer 3: arith=1.000 fact=0.928 icl_kv=0.950 60s
+layer 4: arith=1.000 fact=0.959 icl_kv=0.950 50s
+layer 5: arith=1.000 fact=0.897 icl_kv=0.940 57s
+layer 6: arith=1.000 fact=0.959 icl_kv=0.995 53s
+layer 7: arith=1.000 fact=0.907 icl_kv=0.970 50s
+layer 8: arith=1.000 fact=0.959 icl_kv=0.975 60s
+layer 9: arith=1.000 fact=0.969 icl_kv=0.970 53s
+layer 10: arith=1.000 fact=0.959 icl_kv=0.945 53s
+layer 11: arith=1.000 fact=0.959 icl_kv=0.990 46s
+layer 12: arith=1.000 fact=0.959 icl_kv=0.970 46s
+layer 13: arith=1.000 fact=0.959 icl_kv=0.985 59s
+layer 14: arith=1.000 fact=0.959 icl_kv=0.970 49s
+layer 15: arith=1.000 fact=0.938 icl_kv=0.970 49s
+layer 16: arith=0.990 fact=0.969 icl_kv=0.950 59s
+layer 17: arith=0.995 fact=0.969 icl_kv=0.985 50s
+layer 18: arith=1.000 fact=0.948 icl_kv=0.990 62s
+layer 19: arith=1.000 fact=0.969 icl_kv=0.995 51s
+layer 20: arith=1.000 fact=0.938 icl_kv=0.990 57s
+layer 21: arith=0.990 fact=0.938 icl_kv=0.995 59s
+layer 22: arith=1.000 fact=0.948 icl_kv=1.000 51s
+layer 23: arith=1.000 fact=0.918 icl_kv=0.980 61s
+[apply_ptq] quantized 48 expert tensors, 98 linears/embeds (group=128)
+compressed retention {'arith': 0.81, 'fact': 0.4020618556701031, 'icl_kv': 0.725}
+done 1605.221359014511
+ALLDONE
