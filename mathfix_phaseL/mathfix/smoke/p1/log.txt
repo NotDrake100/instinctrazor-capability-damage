@@ -1,0 +1,27 @@
+2026-10-17 19:03:36 ============================== mathfix phase 1 start | device cpu | smoke True | out /workspace/sleep-shield/mathfix/smoke/p1
+2026-10-17 19:03:40 probe hash 32fcf5443954aba44728818a4df93b7c8d002c94809de039c8626f30ce4f9035 | fact hash 0a51af2d6d1295bc72678f5bd874a43f68bba67dcff60b0af9febf6fedf1f6e0 (smoke)
+2026-10-17 19:03:44 layers 2
+2026-10-17 19:03:44 base eval: {'gsm8k_strict': np.float64(0.0), 'gsm8k_lenient': np.float64(0.0), 'mult': 0.0, 'arc': 0.0} | base recall on all facts 0.0 | gsm 200 items 0s, recall 20 qs 0s
+2026-10-17 19:03:44 SMOKE: tiny model has 0 base-correct gsm8k items -> using all items to exercise code
+2026-10-17 19:03:44 SMOKE: tiny model has 0 base-correct mult items -> using all items to exercise code
+2026-10-17 19:03:44 SMOKE: tiny model has 0 base-correct arc items -> using all items to exercise code
+2026-10-17 19:03:44 base-correct counts: {'gsm8k': 6, 'mult': 6, 'arc': 6}
+2026-10-17 19:03:44 base prefill on base-correct: {'strict': 0.0, 'lenient': 0.0, 'mean_tokens': 16.0, 'pct_steps': 0.0}
+2026-10-17 19:03:44 RUNTIME ESTIMATE (before training, rough): 0.17 h total | training+nightly eval 9 min, prefill 0 min, drift+lens 0 min, layer swap 0 min, shared direction 1 min
+2026-10-17 19:03:46 [b s0 n1] recall 0.0 (tonight 0.0) | ret mult 0.0 arc 0.0 | GSM strict 0.0 lenient 0.0 tok 16 steps 0% trunc 100% fails {'truncated': 6, 'fact_style': 0, 'no_steps': 0, 'reasoning_wrong': 0, 'other': 0} | PREFILL strict 0.0 | loss 11.930 train 0s eval 1s | training ETA 0 min
+2026-10-17 19:03:46 RUNTIME ESTIMATE (measured night 1): 0.03 h total | training+nightly eval 0 min, prefill 0 min, drift+lens 0 min, layer swap 0 min, shared direction 1 min
+2026-10-17 19:03:46 training done (0.0 min this session)
+2026-10-17 19:03:46 logit-lens token sets: reasoning-start ['аз', ' adip', ' bible', '作物', ' 같은', '쇽'] | short-answer-start [] no base output with reasoning steps; R from all base outputs. no short-answer start token reached 5% outside R; used top-3 non-R
+2026-10-17 19:03:46 [drift/lens s0 n1] cos-dist(last tok) by layer [0.001, 0.01] | final-layer KL 0.000 | final P(R) 0.000 (base 0.000) P(S) 0.000 (base 0.000)
+2026-10-17 19:03:47 [swap s0] none    off -> GSM strict 0.0 (subset n=4) steps 0% tok 16 | recall 0.0 | 0s
+2026-10-17 19:03:47 [swap s0] L0      off -> GSM strict 0.0 (subset n=4) steps 0% tok 16 | recall 0.0 | 0s
+2026-10-17 19:03:48 [swap s0] L1      off -> GSM strict 0.0 (subset n=4) steps 0% tok 16 | recall 0.0 | 0s
+2026-10-17 19:03:48 [swap s0] B0-1    off -> GSM strict 0.0 (subset n=4) steps 0% tok 16 | recall 0.0 | 0s
+2026-10-17 19:03:48 [swap s0] all     off -> GSM strict 0.0 (subset n=4) steps 0% tok 16 | recall 0.0 | 0s
+2026-10-17 19:03:48 shared-direction stats: {'cos_seed_pairs': nan, 'cos_own_vs_shared': 0.999999965940203, 'energy_shared': 0.5839781486504052, 'energy_own_top1': 0.583978234297448, 'note': 'means over all 168 matrices; cos = |cosine| of top-1 left singular vectors; energy = fraction of ||dW||_F^2 at night 7'}
+2026-10-17 19:03:49 [shared s0] merged_unedited      GSM strict 0.0 steps 0% tok 16 | recall 0.0 | mult 0.0 arc 0.0
+2026-10-17 19:03:49 [shared s0] minus_shared_top1    GSM strict 0.0 steps 0% tok 16 | recall 0.0 | mult 0.0 arc 0.0
+2026-10-17 19:03:49 [shared s0] minus_own_top1       GSM strict 0.0 steps 0% tok 16 | recall 0.0 | mult 0.0 arc 0.0
+2026-10-17 19:03:50 [shared s0] minus_random_rank1   GSM strict 0.0 steps 0% tok 16 | recall 0.0 | mult 0.0 arc 0.0
+2026-10-17 19:03:50 [shared s0] base_no_adapter      GSM strict 0.0 steps 0% tok 16 | recall 0.0 | mult 0.0 arc 0.0
+2026-10-17 19:03:50 PHASE 1 DONE in 0.2 min (this session). Summary: /workspace/sleep-shield/mathfix/smoke/p1/phase1_summary.json

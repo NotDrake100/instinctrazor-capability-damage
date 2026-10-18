@@ -1,0 +1,5 @@
+# torch comes from the Vast pytorch image (CUDA build); do not reinstall it here.
+transformers
+peft
+datasets
+accelerate

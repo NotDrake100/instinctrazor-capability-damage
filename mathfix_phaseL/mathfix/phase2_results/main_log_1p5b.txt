@@ -1,0 +1,892 @@
+2026-10-17 13:53:21 ============================== mathfix phase 1 start | device cuda | smoke False | out /workspace/mathfix/phase1_out
+2026-10-17 13:53:21 GPU: Quadro RTX 5000
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split:  27%|██▋       | 2000/7473 [00:00<00:00, 7352.07 examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 24264.78 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 80498.90 examples/s]
+Generating train split:   0%|          | 0/2251 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 2251/2251 [00:00<00:00, 74144.81 examples/s]
+Generating test split:   0%|          | 0/2376 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 2376/2376 [00:00<00:00, 109319.41 examples/s]
+Generating validation split:   0%|          | 0/570 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 570/570 [00:00<00:00, 58387.96 examples/s]
+2026-10-17 13:53:32 probe hash 62a39450d3434e0dfc267e584c096a17d61fdf56cc39cc2f18a619942ad74ced | fact hash f43d375c903756a1c6b017a14a07a1ac70f67df774d1f5cdc5bc23f3b4f38e75 (match sleep_shield.py)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  30%|███       | 88/290 [00:00<00:00, 864.07it/s]Loading weights:  68%|██████▊   | 196/290 [00:00<00:00, 985.03it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 998.45it/s]
+2026-10-17 13:53:51 layers 24
+[W1017 13:54:27.156078105 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 264241152 bytes (free: 48758784, total: 16702046208).
+[W1017 13:54:38.986780977 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 299892736 bytes (free: 65536000, total: 16702046208).
+2026-10-17 13:55:34 base eval: {'gsm8k_strict': np.float64(50.0), 'gsm8k_lenient': np.float64(49.0), 'mult': 38.0, 'arc': 67.0} | base recall on all facts 0.0 | gsm 200 items 88s, recall 1400 qs 13s
+2026-10-17 13:55:34 base-correct counts: {'gsm8k': 100, 'mult': 76, 'arc': 134}
+2026-10-17 13:56:17 base prefill on base-correct: {'strict': 76.0, 'lenient': 77.0, 'mean_tokens': 218.34, 'pct_steps': 100.0}
+2026-10-17 13:56:17 RUNTIME ESTIMATE (before training, rough): 2.26 h total | training+nightly eval 23 min, prefill 3 min, drift+lens 2 min, layer swap 94 min, shared direction 13 min
+2026-10-17 13:57:31 [b s0 n1] recall 88.5 (tonight 88.5) | ret mult 78.9 arc 76.9 | GSM strict 22.0 lenient 22.0 tok 53 steps 41% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 57, 'reasoning_wrong': 21, 'other': 0} | loss 0.051 train 35s eval 37s | training ETA 24 min
+2026-10-17 13:57:31 RUNTIME ESTIMATE (measured night 1): 2.30 h total | training+nightly eval 25 min, prefill 3 min, drift+lens 2 min, layer swap 94 min, shared direction 13 min  !!! > 2 h target: consider --swap_gsm_max_new 384 (only affects (e)/(f) re-scoring) on a fresh --out
+2026-10-17 13:59:10 [b s0 n2] recall 88.8 (tonight 85.0) | ret mult 60.5 arc 82.8 | GSM strict 4.0 lenient 4.0 tok 28 steps 9% trunc 3% fails {'truncated': 3, 'fact_style': 0, 'no_steps': 89, 'reasoning_wrong': 4, 'other': 0} | loss 0.026 train 35s eval 62s | training ETA 27 min
+2026-10-17 14:01:21 [b s0 n3] recall 88.3 (tonight 85.0) | ret mult 60.5 arc 76.9 | GSM strict 5.0 lenient 5.0 tok 19 steps 6% trunc 1% fails {'truncated': 1, 'fact_style': 0, 'no_steps': 91, 'reasoning_wrong': 3, 'other': 0} | loss 0.046 train 35s eval 95s | training ETA 30 min
+2026-10-17 14:03:02 [b s0 n4] recall 91.0 (tonight 83.0) | ret mult 67.1 arc 76.1 | GSM strict 4.0 lenient 4.0 tok 14 steps 7% trunc 1% fails {'truncated': 1, 'fact_style': 0, 'no_steps': 89, 'reasoning_wrong': 6, 'other': 0} | loss 0.038 train 35s eval 64s | training ETA 29 min
+2026-10-17 14:05:18 [b s0 n5] recall 88.7 (tonight 75.0) | ret mult 69.7 arc 64.2 | GSM strict 5.0 lenient 5.0 tok 12 steps 2% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 94, 'reasoning_wrong': 1, 'other': 0} | loss 0.226 train 35s eval 99s | training ETA 29 min
+2026-10-17 14:06:50 [b s0 n6] recall 86.7 (tonight 68.5) | ret mult 59.2 arc 54.5 | GSM strict 6.0 lenient 6.0 tok 11 steps 2% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 93, 'reasoning_wrong': 1, 'other': 0} | loss 0.055 train 35s eval 56s | training ETA 26 min
+2026-10-17 14:09:24 [b s0 n7] recall 86.9 (tonight 67.0) | ret mult 56.6 arc 60.4 | GSM strict 2.0 lenient 2.0 tok 6 steps 1% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 97, 'reasoning_wrong': 1, 'other': 0} | PREFILL strict 38.0 | loss 0.092 train 35s eval 117s | training ETA 26 min
+2026-10-17 14:11:06 [b s1 n1] recall 85.5 (tonight 85.5) | ret mult 69.7 arc 82.1 | GSM strict 1.0 lenient 1.0 tok 12 steps 5% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 95, 'reasoning_wrong': 4, 'other': 0} | loss 0.018 train 35s eval 65s | training ETA 24 min
+2026-10-17 14:12:22 [b s1 n2] recall 84.0 (tonight 82.0) | ret mult 65.8 arc 63.4 | GSM strict 1.0 lenient 1.0 tok 7 steps 1% trunc 0% fails {'truncated': 0, 'fact_style': 1, 'no_steps': 98, 'reasoning_wrong': 0, 'other': 0} | loss 0.011 train 35s eval 40s | training ETA 21 min
+2026-10-17 14:14:19 [b s1 n3] recall 89.0 (tonight 83.5) | ret mult 68.4 arc 65.7 | GSM strict 1.0 lenient 1.0 tok 14 steps 5% trunc 1% fails {'truncated': 1, 'fact_style': 0, 'no_steps': 95, 'reasoning_wrong': 3, 'other': 0} | loss 0.034 train 35s eval 80s | training ETA 20 min
+2026-10-17 14:15:47 [b s1 n4] recall 89.2 (tonight 81.5) | ret mult 63.2 arc 73.1 | GSM strict 0.0 lenient 0.0 tok 8 steps 2% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 98, 'reasoning_wrong': 2, 'other': 0} | loss 0.022 train 34s eval 52s | training ETA 18 min
+2026-10-17 14:17:42 [b s1 n5] recall 86.6 (tonight 70.0) | ret mult 65.8 arc 73.1 | GSM strict 0.0 lenient 0.0 tok 9 steps 1% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 99, 'reasoning_wrong': 1, 'other': 0} | loss 0.070 train 36s eval 78s | training ETA 16 min
+2026-10-17 14:19:30 [b s1 n6] recall 85.3 (tonight 64.5) | ret mult 57.9 arc 64.9 | GSM strict 1.0 lenient 1.0 tok 10 steps 2% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 98, 'reasoning_wrong': 1, 'other': 0} | loss 0.068 train 36s eval 70s | training ETA 14 min
+2026-10-17 14:22:41 [b s1 n7] recall 84.4 (tonight 60.0) | ret mult 60.5 arc 55.2 | GSM strict 0.0 lenient 0.0 tok 9 steps 1% trunc 1% fails {'truncated': 1, 'fact_style': 1, 'no_steps': 98, 'reasoning_wrong': 0, 'other': 0} | PREFILL strict 28.0 | loss 0.147 train 35s eval 154s | training ETA 13 min
+2026-10-17 14:24:18 [b s2 n1] recall 84.0 (tonight 84.0) | ret mult 78.9 arc 84.3 | GSM strict 1.0 lenient 1.0 tok 10 steps 2% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 98, 'reasoning_wrong': 1, 'other': 0} | loss 0.035 train 35s eval 61s | training ETA 11 min
+2026-10-17 14:25:16 [b s2 n2] recall 89.5 (tonight 86.5) | ret mult 63.2 arc 82.8 | GSM strict 3.0 lenient 3.0 tok 7 steps 2% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 97, 'reasoning_wrong': 0, 'other': 0} | loss 0.048 train 35s eval 22s | training ETA 9 min
+2026-10-17 14:26:28 [b s2 n3] recall 89.5 (tonight 85.0) | ret mult 63.2 arc 86.6 | GSM strict 1.0 lenient 1.0 tok 8 steps 2% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 98, 'reasoning_wrong': 1, 'other': 0} | loss 0.027 train 34s eval 35s | training ETA 7 min
+2026-10-17 14:27:39 [b s2 n4] recall 87.9 (tonight 79.0) | ret mult 48.7 arc 88.8 | GSM strict 1.0 lenient 1.0 tok 7 steps 1% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 99, 'reasoning_wrong': 0, 'other': 0} | loss 0.096 train 35s eval 35s | training ETA 5 min
+2026-10-17 14:29:47 [b s2 n5] recall 85.5 (tonight 72.0) | ret mult 47.4 arc 72.4 | GSM strict 2.0 lenient 2.0 tok 14 steps 2% trunc 1% fails {'truncated': 1, 'fact_style': 0, 'no_steps': 96, 'reasoning_wrong': 1, 'other': 0} | loss 0.100 train 35s eval 92s | training ETA 4 min
+2026-10-17 14:31:03 [b s2 n6] recall 87.2 (tonight 72.0) | ret mult 19.7 arc 71.6 | GSM strict 3.0 lenient 3.0 tok 7 steps 1% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 96, 'reasoning_wrong': 1, 'other': 0} | loss 0.107 train 35s eval 39s | training ETA 2 min
+2026-10-17 14:33:33 [b s2 n7] recall 89.6 (tonight 71.0) | ret mult 40.8 arc 68.7 | GSM strict 3.0 lenient 3.0 tok 5 steps 3% trunc 0% fails {'truncated': 0, 'fact_style': 0, 'no_steps': 94, 'reasoning_wrong': 3, 'other': 0} | PREFILL strict 24.0 | loss 0.073 train 35s eval 113s | training ETA 0 min
+2026-10-17 14:33:33 training done (37.3 min this session)
+2026-10-17 14:33:33 logit-lens token sets: reasoning-start ['To'] | short-answer-start ['$', '1'] 
+2026-10-17 14:33:40 [drift/lens s0 n1] cos-dist(last tok) by layer [0.001, 0.002, 0.008, 0.015, 0.022, 0.045, 0.059, 0.055, 0.068, 0.058, 0.067, 0.07, 0.101, 0.134, 0.113, 0.151, 0.184, 0.17, 0.164, 0.201, 0.172, 0.137, 0.125, 0.318] | final-layer KL 4.147 | final P(R) 0.013 (base 0.750) P(S) 0.344 (base 0.004)
+2026-10-17 14:33:44 [drift/lens s0 n2] cos-dist(last tok) by layer [0.001, 0.002, 0.006, 0.014, 0.025, 0.029, 0.031, 0.037, 0.05, 0.043, 0.053, 0.056, 0.079, 0.105, 0.106, 0.153, 0.184, 0.175, 0.172, 0.209, 0.187, 0.147, 0.133, 0.353] | final-layer KL 5.040 | final P(R) 0.009 (base 0.750) P(S) 0.722 (base 0.004)
+2026-10-17 14:33:48 [drift/lens s0 n3] cos-dist(last tok) by layer [0.002, 0.004, 0.012, 0.021, 0.031, 0.034, 0.034, 0.04, 0.051, 0.044, 0.054, 0.055, 0.073, 0.096, 0.097, 0.142, 0.168, 0.157, 0.154, 0.189, 0.174, 0.138, 0.127, 0.329] | final-layer KL 5.741 | final P(R) 0.004 (base 0.750) P(S) 0.731 (base 0.004)
+2026-10-17 14:33:52 [drift/lens s0 n4] cos-dist(last tok) by layer [0.002, 0.006, 0.012, 0.018, 0.027, 0.032, 0.039, 0.052, 0.071, 0.064, 0.078, 0.083, 0.097, 0.118, 0.114, 0.167, 0.193, 0.181, 0.178, 0.217, 0.2, 0.167, 0.153, 0.368] | final-layer KL 6.601 | final P(R) 0.002 (base 0.750) P(S) 0.674 (base 0.004)
+2026-10-17 14:33:57 [drift/lens s0 n5] cos-dist(last tok) by layer [0.002, 0.005, 0.012, 0.019, 0.027, 0.032, 0.038, 0.048, 0.071, 0.066, 0.081, 0.085, 0.096, 0.113, 0.108, 0.158, 0.183, 0.175, 0.171, 0.213, 0.202, 0.17, 0.155, 0.374] | final-layer KL 5.883 | final P(R) 0.004 (base 0.750) P(S) 0.768 (base 0.004)
+2026-10-17 14:34:02 [drift/lens s0 n6] cos-dist(last tok) by layer [0.002, 0.005, 0.015, 0.023, 0.032, 0.04, 0.055, 0.06, 0.084, 0.07, 0.083, 0.086, 0.094, 0.112, 0.114, 0.168, 0.193, 0.185, 0.183, 0.227, 0.213, 0.181, 0.166, 0.399] | final-layer KL 7.507 | final P(R) 0.001 (base 0.750) P(S) 0.695 (base 0.004)
+2026-10-17 14:34:06 [drift/lens s0 n7] cos-dist(last tok) by layer [0.003, 0.006, 0.014, 0.022, 0.036, 0.044, 0.057, 0.069, 0.091, 0.078, 0.091, 0.095, 0.104, 0.119, 0.108, 0.161, 0.185, 0.172, 0.169, 0.209, 0.201, 0.178, 0.164, 0.376] | final-layer KL 5.304 | final P(R) 0.006 (base 0.750) P(S) 0.747 (base 0.004)
+2026-10-17 14:34:10 [drift/lens s1 n1] cos-dist(last tok) by layer [0.001, 0.001, 0.003, 0.006, 0.014, 0.024, 0.026, 0.023, 0.026, 0.022, 0.028, 0.031, 0.06, 0.103, 0.111, 0.157, 0.198, 0.187, 0.187, 0.219, 0.187, 0.144, 0.131, 0.347] | final-layer KL 5.830 | final P(R) 0.003 (base 0.750) P(S) 0.685 (base 0.004)
+2026-10-17 14:34:14 [drift/lens s1 n2] cos-dist(last tok) by layer [0.002, 0.004, 0.009, 0.013, 0.031, 0.038, 0.035, 0.035, 0.047, 0.04, 0.048, 0.058, 0.094, 0.162, 0.161, 0.245, 0.318, 0.297, 0.287, 0.34, 0.297, 0.235, 0.207, 0.495] | final-layer KL 10.978 | final P(R) 0.000 (base 0.750) P(S) 0.596 (base 0.004)
+2026-10-17 14:34:18 [drift/lens s1 n3] cos-dist(last tok) by layer [0.002, 0.005, 0.011, 0.02, 0.034, 0.04, 0.037, 0.032, 0.043, 0.04, 0.052, 0.06, 0.077, 0.101, 0.102, 0.16, 0.201, 0.191, 0.194, 0.229, 0.207, 0.167, 0.152, 0.382] | final-layer KL 6.828 | final P(R) 0.001 (base 0.750) P(S) 0.872 (base 0.004)
+2026-10-17 14:34:22 [drift/lens s1 n4] cos-dist(last tok) by layer [0.002, 0.005, 0.011, 0.017, 0.033, 0.039, 0.034, 0.029, 0.038, 0.037, 0.05, 0.058, 0.077, 0.106, 0.108, 0.17, 0.215, 0.205, 0.207, 0.24, 0.218, 0.173, 0.157, 0.381] | final-layer KL 7.657 | final P(R) 0.000 (base 0.750) P(S) 0.769 (base 0.004)
+2026-10-17 14:34:26 [drift/lens s1 n5] cos-dist(last tok) by layer [0.002, 0.004, 0.009, 0.014, 0.029, 0.036, 0.032, 0.027, 0.036, 0.036, 0.05, 0.059, 0.076, 0.101, 0.11, 0.171, 0.219, 0.211, 0.207, 0.238, 0.211, 0.172, 0.158, 0.377] | final-layer KL 6.773 | final P(R) 0.002 (base 0.750) P(S) 0.803 (base 0.004)
+2026-10-17 14:34:31 [drift/lens s1 n6] cos-dist(last tok) by layer [0.002, 0.004, 0.009, 0.013, 0.026, 0.031, 0.032, 0.026, 0.037, 0.036, 0.051, 0.061, 0.08, 0.109, 0.112, 0.175, 0.215, 0.203, 0.203, 0.243, 0.226, 0.184, 0.167, 0.4] | final-layer KL 8.641 | final P(R) 0.000 (base 0.750) P(S) 0.858 (base 0.004)
+2026-10-17 14:34:35 [drift/lens s1 n7] cos-dist(last tok) by layer [0.002, 0.006, 0.013, 0.016, 0.032, 0.04, 0.046, 0.045, 0.059, 0.058, 0.069, 0.078, 0.099, 0.133, 0.138, 0.209, 0.26, 0.242, 0.238, 0.284, 0.267, 0.225, 0.208, 0.453] | final-layer KL 9.836 | final P(R) 0.000 (base 0.750) P(S) 0.805 (base 0.004)
+2026-10-17 14:34:39 [drift/lens s2 n1] cos-dist(last tok) by layer [0.001, 0.003, 0.007, 0.012, 0.024, 0.082, 0.061, 0.051, 0.059, 0.046, 0.056, 0.058, 0.093, 0.124, 0.12, 0.168, 0.201, 0.189, 0.185, 0.227, 0.202, 0.156, 0.149, 0.348] | final-layer KL 4.832 | final P(R) 0.009 (base 0.750) P(S) 0.561 (base 0.004)
+2026-10-17 14:34:43 [drift/lens s2 n2] cos-dist(last tok) by layer [0.001, 0.003, 0.008, 0.012, 0.025, 0.052, 0.049, 0.044, 0.06, 0.044, 0.054, 0.057, 0.101, 0.129, 0.116, 0.164, 0.193, 0.183, 0.183, 0.221, 0.203, 0.166, 0.155, 0.358] | final-layer KL 5.591 | final P(R) 0.005 (base 0.750) P(S) 0.832 (base 0.004)
+2026-10-17 14:34:48 [drift/lens s2 n3] cos-dist(last tok) by layer [0.002, 0.003, 0.007, 0.014, 0.031, 0.057, 0.053, 0.045, 0.058, 0.041, 0.05, 0.049, 0.083, 0.114, 0.111, 0.162, 0.196, 0.189, 0.191, 0.229, 0.206, 0.177, 0.165, 0.398] | final-layer KL 6.263 | final P(R) 0.003 (base 0.750) P(S) 0.838 (base 0.004)
+2026-10-17 14:34:52 [drift/lens s2 n4] cos-dist(last tok) by layer [0.001, 0.003, 0.007, 0.012, 0.028, 0.052, 0.048, 0.04, 0.055, 0.041, 0.054, 0.057, 0.093, 0.126, 0.121, 0.177, 0.212, 0.206, 0.207, 0.246, 0.225, 0.191, 0.171, 0.39] | final-layer KL 8.214 | final P(R) 0.000 (base 0.750) P(S) 0.854 (base 0.004)
+2026-10-17 14:34:56 [drift/lens s2 n5] cos-dist(last tok) by layer [0.002, 0.003, 0.008, 0.012, 0.028, 0.067, 0.058, 0.052, 0.069, 0.051, 0.062, 0.064, 0.089, 0.114, 0.112, 0.164, 0.195, 0.189, 0.19, 0.228, 0.211, 0.171, 0.156, 0.358] | final-layer KL 7.271 | final P(R) 0.001 (base 0.750) P(S) 0.850 (base 0.004)
+2026-10-17 14:35:01 [drift/lens s2 n6] cos-dist(last tok) by layer [0.003, 0.003, 0.009, 0.015, 0.039, 0.065, 0.064, 0.051, 0.066, 0.05, 0.061, 0.065, 0.087, 0.109, 0.109, 0.167, 0.194, 0.185, 0.19, 0.229, 0.215, 0.186, 0.164, 0.389] | final-layer KL 7.381 | final P(R) 0.001 (base 0.750) P(S) 0.878 (base 0.004)
+2026-10-17 14:35:05 [drift/lens s2 n7] cos-dist(last tok) by layer [0.002, 0.003, 0.009, 0.016, 0.042, 0.054, 0.063, 0.052, 0.071, 0.054, 0.065, 0.067, 0.087, 0.108, 0.111, 0.168, 0.201, 0.192, 0.195, 0.235, 0.222, 0.201, 0.18, 0.405] | final-layer KL 8.087 | final P(R) 0.000 (base 0.750) P(S) 0.816 (base 0.004)
+2026-10-17 14:35:35 [swap s0] none    off -> GSM strict 2.0 (subset n=100) steps 1% tok 6 | recall 86.9 | 29s
+2026-10-17 14:37:06 [swap s0] L0      off -> GSM strict 4.0 (subset n=100) steps 1% tok 12 | recall 81.9 | 91s
+2026-10-17 14:37:38 [swap s0] L1      off -> GSM strict 2.0 (subset n=100) steps 3% tok 8 | recall 84.2 | 32s
+2026-10-17 14:38:32 [swap s0] L2      off -> GSM strict 2.0 (subset n=100) steps 4% tok 8 | recall 83.1 | 54s
+2026-10-17 14:38:46 [swap s0] L3      off -> GSM strict 2.0 (subset n=100) steps 4% tok 5 | recall 86.2 | 13s
+2026-10-17 14:39:11 [swap s0] L4      off -> GSM strict 2.0 (subset n=100) steps 1% tok 6 | recall 85.5 | 25s
+2026-10-17 14:39:25 [swap s0] L5      off -> GSM strict 2.0 (subset n=100) steps 3% tok 5 | recall 86.5 | 14s
+2026-10-17 14:40:21 [swap s0] L6      off -> GSM strict 4.0 (subset n=100) steps 4% tok 13 | recall 86.2 | 55s
+2026-10-17 14:40:59 [swap s0] L7      off -> GSM strict 4.0 (subset n=100) steps 6% tok 11 | recall 87.0 | 39s
+2026-10-17 14:41:39 [swap s0] L8      off -> GSM strict 3.0 (subset n=100) steps 9% tok 10 | recall 86.8 | 40s
+2026-10-17 14:42:22 [swap s0] L9      off -> GSM strict 2.0 (subset n=100) steps 5% tok 10 | recall 87.4 | 42s
+2026-10-17 14:43:13 [swap s0] L10     off -> GSM strict 3.0 (subset n=100) steps 4% tok 9 | recall 87.4 | 52s
+2026-10-17 14:43:52 [swap s0] L11     off -> GSM strict 3.0 (subset n=100) steps 3% tok 10 | recall 87.0 | 39s
+2026-10-17 14:44:31 [swap s0] L12     off -> GSM strict 4.0 (subset n=100) steps 2% tok 9 | recall 87.0 | 38s
+2026-10-17 14:45:18 [swap s0] L13     off -> GSM strict 3.0 (subset n=100) steps 3% tok 9 | recall 86.7 | 47s
+2026-10-17 14:45:52 [swap s0] L14     off -> GSM strict 4.0 (subset n=100) steps 5% tok 10 | recall 86.8 | 34s
+2026-10-17 14:46:19 [swap s0] L15     off -> GSM strict 2.0 (subset n=100) steps 2% tok 7 | recall 86.1 | 27s
+2026-10-17 14:46:58 [swap s0] L16     off -> GSM strict 3.0 (subset n=100) steps 4% tok 9 | recall 85.9 | 39s
+2026-10-17 14:47:40 [swap s0] L17     off -> GSM strict 4.0 (subset n=100) steps 3% tok 10 | recall 85.1 | 43s
+2026-10-17 14:48:14 [swap s0] L18     off -> GSM strict 4.0 (subset n=100) steps 4% tok 9 | recall 85.3 | 34s
+2026-10-17 14:49:18 [swap s0] L19     off -> GSM strict 3.0 (subset n=100) steps 6% tok 12 | recall 82.9 | 64s
+2026-10-17 14:50:21 [swap s0] L20     off -> GSM strict 2.0 (subset n=100) steps 6% tok 8 | recall 75.6 | 63s
+2026-10-17 14:50:47 [swap s0] L21     off -> GSM strict 4.0 (subset n=100) steps 4% tok 8 | recall 75.7 | 26s
+2026-10-17 14:51:39 [swap s0] L22     off -> GSM strict 3.0 (subset n=100) steps 6% tok 10 | recall 75.1 | 52s
+2026-10-17 14:52:53 [swap s0] L23     off -> GSM strict 4.0 (subset n=100) steps 7% tok 19 | recall 76.1 | 74s
+2026-10-17 14:53:31 [swap s0] B0-2    off -> GSM strict 3.0 (subset n=100) steps 4% tok 8 | recall 51.4 | 38s
+2026-10-17 14:53:45 [swap s0] B3-5    off -> GSM strict 2.0 (subset n=100) steps 5% tok 5 | recall 80.5 | 15s
+2026-10-17 14:54:46 [swap s0] B6-8    off -> GSM strict 3.0 (subset n=100) steps 11% tok 11 | recall 85.1 | 61s
+2026-10-17 14:56:00 [swap s0] B9-11   off -> GSM strict 5.0 (subset n=100) steps 8% tok 12 | recall 86.9 | 74s
+2026-10-17 14:56:39 [swap s0] B12-14  off -> GSM strict 3.0 (subset n=100) steps 8% tok 14 | recall 86.0 | 39s
+2026-10-17 14:57:44 [swap s0] B15-17  off -> GSM strict 5.0 (subset n=100) steps 6% tok 16 | recall 78.7 | 65s
+2026-10-17 14:58:18 [swap s0] B18-20  off -> GSM strict 4.0 (subset n=100) steps 6% tok 8 | recall 40.7 | 34s
+2026-10-17 14:59:22 [swap s0] B21-23  off -> GSM strict 6.0 (subset n=100) steps 12% tok 25 | recall 18.1 | 64s
+2026-10-17 15:00:43 [swap s0] all     off -> GSM strict 97.0 (subset n=100) steps 96% tok 271 | recall 0.0 | 82s
+2026-10-17 15:01:49 [swap s1] none    off -> GSM strict 0.0 (subset n=100) steps 1% tok 9 | recall 84.4 | 65s
+2026-10-17 15:02:41 [swap s1] L0      off -> GSM strict 1.0 (subset n=100) steps 1% tok 8 | recall 79.4 | 52s
+2026-10-17 15:03:33 [swap s1] L1      off -> GSM strict 0.0 (subset n=100) steps 1% tok 8 | recall 81.3 | 52s
+2026-10-17 15:04:38 [swap s1] L2      off -> GSM strict 0.0 (subset n=100) steps 1% tok 10 | recall 81.4 | 65s
+2026-10-17 15:05:42 [swap s1] L3      off -> GSM strict 0.0 (subset n=100) steps 1% tok 9 | recall 80.9 | 64s
+2026-10-17 15:06:47 [swap s1] L4      off -> GSM strict 0.0 (subset n=100) steps 1% tok 9 | recall 82.4 | 65s
+2026-10-17 15:07:44 [swap s1] L5      off -> GSM strict 0.0 (subset n=100) steps 1% tok 9 | recall 83.7 | 57s
+2026-10-17 15:08:34 [swap s1] L6      off -> GSM strict 0.0 (subset n=100) steps 1% tok 8 | recall 84.1 | 50s
+2026-10-17 15:09:51 [swap s1] L7      off -> GSM strict 0.0 (subset n=100) steps 1% tok 9 | recall 83.6 | 77s
+2026-10-17 15:10:39 [swap s1] L8      off -> GSM strict 0.0 (subset n=100) steps 1% tok 8 | recall 84.4 | 48s
+2026-10-17 15:11:34 [swap s1] L9      off -> GSM strict 0.0 (subset n=100) steps 1% tok 8 | recall 84.4 | 55s
+2026-10-17 15:12:21 [swap s1] L10     off -> GSM strict 1.0 (subset n=100) steps 1% tok 8 | recall 84.6 | 48s
+2026-10-17 15:13:27 [swap s1] L11     off -> GSM strict 1.0 (subset n=100) steps 1% tok 10 | recall 84.3 | 65s
+2026-10-17 15:14:15 [swap s1] L12     off -> GSM strict 0.0 (subset n=100) steps 1% tok 8 | recall 84.0 | 48s
+2026-10-17 15:14:51 [swap s1] L13     off -> GSM strict 1.0 (subset n=100) steps 1% tok 7 | recall 83.1 | 36s
+2026-10-17 15:15:56 [swap s1] L14     off -> GSM strict 0.0 (subset n=100) steps 1% tok 9 | recall 83.6 | 64s
+2026-10-17 15:17:13 [swap s1] L15     off -> GSM strict 1.0 (subset n=100) steps 0% tok 9 | recall 82.6 | 78s
+2026-10-17 15:18:08 [swap s1] L16     off -> GSM strict 2.0 (subset n=100) steps 1% tok 8 | recall 79.8 | 55s
+2026-10-17 15:19:05 [swap s1] L17     off -> GSM strict 1.0 (subset n=100) steps 1% tok 9 | recall 81.6 | 56s
+2026-10-17 15:20:11 [swap s1] L18     off -> GSM strict 0.0 (subset n=100) steps 1% tok 9 | recall 80.4 | 67s
+2026-10-17 15:21:15 [swap s1] L19     off -> GSM strict 0.0 (subset n=100) steps 1% tok 10 | recall 78.1 | 64s
+2026-10-17 15:22:20 [swap s1] L20     off -> GSM strict 1.0 (subset n=100) steps 1% tok 10 | recall 71.1 | 65s
+2026-10-17 15:22:55 [swap s1] L21     off -> GSM strict 1.0 (subset n=100) steps 1% tok 7 | recall 69.4 | 36s
+2026-10-17 15:24:06 [swap s1] L22     off -> GSM strict 0.0 (subset n=100) steps 1% tok 9 | recall 74.1 | 70s
+2026-10-17 15:24:43 [swap s1] L23     off -> GSM strict 1.0 (subset n=100) steps 1% tok 7 | recall 75.1 | 37s
+2026-10-17 15:25:49 [swap s1] B0-2    off -> GSM strict 0.0 (subset n=100) steps 1% tok 10 | recall 51.1 | 66s
+2026-10-17 15:26:30 [swap s1] B3-5    off -> GSM strict 0.0 (subset n=100) steps 1% tok 8 | recall 75.4 | 42s
+2026-10-17 15:27:23 [swap s1] B6-8    off -> GSM strict 1.0 (subset n=100) steps 5% tok 14 | recall 82.4 | 52s
+2026-10-17 15:28:19 [swap s1] B9-11   off -> GSM strict 1.0 (subset n=100) steps 3% tok 13 | recall 84.0 | 57s
+2026-10-17 15:29:32 [swap s1] B12-14  off -> GSM strict 1.0 (subset n=100) steps 4% tok 24 | recall 79.7 | 73s
+2026-10-17 15:30:18 [swap s1] B15-17  off -> GSM strict 2.0 (subset n=100) steps 0% tok 8 | recall 68.5 | 46s
+2026-10-17 15:31:21 [swap s1] B18-20  off -> GSM strict 0.0 (subset n=100) steps 4% tok 14 | recall 33.3 | 63s
+2026-10-17 15:32:00 [swap s1] B21-23  off -> GSM strict 1.0 (subset n=100) steps 1% tok 10 | recall 18.7 | 39s
+2026-10-17 15:33:11 [swap s1] all     off -> GSM strict 97.0 (subset n=100) steps 96% tok 271 | recall 0.0 | 71s
+2026-10-17 15:33:25 [swap s2] none    off -> GSM strict 3.0 (subset n=100) steps 3% tok 5 | recall 89.6 | 12s
+2026-10-17 15:33:50 [swap s2] L0      off -> GSM strict 4.0 (subset n=100) steps 4% tok 6 | recall 84.8 | 25s
+2026-10-17 15:34:03 [swap s2] L1      off -> GSM strict 3.0 (subset n=100) steps 3% tok 5 | recall 85.7 | 13s
+2026-10-17 15:34:27 [swap s2] L2      off -> GSM strict 4.0 (subset n=100) steps 4% tok 6 | recall 86.3 | 24s
+2026-10-17 15:34:51 [swap s2] L3      off -> GSM strict 4.0 (subset n=100) steps 2% tok 6 | recall 87.4 | 24s
+2026-10-17 15:35:15 [swap s2] L4      off -> GSM strict 4.0 (subset n=100) steps 3% tok 6 | recall 87.3 | 24s
+2026-10-17 15:35:28 [swap s2] L5      off -> GSM strict 3.0 (subset n=100) steps 3% tok 5 | recall 88.4 | 13s
+2026-10-17 15:36:33 [swap s2] L6      off -> GSM strict 3.0 (subset n=100) steps 4% tok 10 | recall 89.4 | 65s
+2026-10-17 15:36:46 [swap s2] L7      off -> GSM strict 3.0 (subset n=100) steps 3% tok 5 | recall 88.9 | 13s
+2026-10-17 15:37:08 [swap s2] L8      off -> GSM strict 3.0 (subset n=100) steps 3% tok 6 | recall 88.6 | 22s
+2026-10-17 15:37:21 [swap s2] L9      off -> GSM strict 3.0 (subset n=100) steps 3% tok 5 | recall 89.1 | 13s
+2026-10-17 15:38:47 [swap s2] L10     off -> GSM strict 4.0 (subset n=100) steps 4% tok 16 | recall 88.9 | 86s
+2026-10-17 15:39:58 [swap s2] L11     off -> GSM strict 3.0 (subset n=100) steps 3% tok 10 | recall 89.0 | 71s
+2026-10-17 15:40:10 [swap s2] L12     off -> GSM strict 3.0 (subset n=100) steps 2% tok 5 | recall 88.9 | 12s
+2026-10-17 15:40:37 [swap s2] L13     off -> GSM strict 4.0 (subset n=100) steps 3% tok 6 | recall 89.0 | 27s
+2026-10-17 15:41:51 [swap s2] L14     off -> GSM strict 4.0 (subset n=100) steps 4% tok 11 | recall 88.4 | 74s
+2026-10-17 15:42:15 [swap s2] L15     off -> GSM strict 4.0 (subset n=100) steps 4% tok 6 | recall 87.2 | 24s
+2026-10-17 15:42:27 [swap s2] L16     off -> GSM strict 2.0 (subset n=100) steps 2% tok 5 | recall 87.7 | 12s
+2026-10-17 15:43:57 [swap s2] L17     off -> GSM strict 4.0 (subset n=100) steps 3% tok 11 | recall 87.2 | 90s
+2026-10-17 15:44:09 [swap s2] L18     off -> GSM strict 3.0 (subset n=100) steps 2% tok 5 | recall 86.7 | 13s
+2026-10-17 15:44:34 [swap s2] L19     off -> GSM strict 3.0 (subset n=100) steps 2% tok 6 | recall 84.1 | 25s
+2026-10-17 15:44:58 [swap s2] L20     off -> GSM strict 4.0 (subset n=100) steps 3% tok 6 | recall 81.3 | 24s
+2026-10-17 15:45:24 [swap s2] L21     off -> GSM strict 4.0 (subset n=100) steps 2% tok 6 | recall 73.3 | 25s
+2026-10-17 15:46:38 [swap s2] L22     off -> GSM strict 2.0 (subset n=100) steps 4% tok 10 | recall 75.6 | 74s
+2026-10-17 15:47:43 [swap s2] L23     off -> GSM strict 2.0 (subset n=100) steps 1% tok 10 | recall 77.9 | 65s
+2026-10-17 15:48:51 [swap s2] B0-2    off -> GSM strict 4.0 (subset n=100) steps 3% tok 12 | recall 53.3 | 68s
+2026-10-17 15:49:55 [swap s2] B3-5    off -> GSM strict 3.0 (subset n=100) steps 2% tok 10 | recall 79.6 | 64s
+2026-10-17 15:51:19 [swap s2] B6-8    off -> GSM strict 2.0 (subset n=100) steps 6% tok 11 | recall 87.4 | 84s
+2026-10-17 15:52:23 [swap s2] B9-11   off -> GSM strict 4.0 (subset n=100) steps 4% tok 10 | recall 88.0 | 64s
+2026-10-17 15:53:31 [swap s2] B12-14  off -> GSM strict 3.0 (subset n=100) steps 3% tok 12 | recall 86.8 | 68s
+2026-10-17 15:54:43 [swap s2] B15-17  off -> GSM strict 2.0 (subset n=100) steps 4% tok 16 | recall 79.2 | 72s
+2026-10-17 15:55:09 [swap s2] B18-20  off -> GSM strict 4.0 (subset n=100) steps 2% tok 6 | recall 44.6 | 26s
+2026-10-17 15:55:37 [swap s2] B21-23  off -> GSM strict 3.0 (subset n=100) steps 2% tok 6 | recall 15.9 | 28s
+2026-10-17 15:56:46 [swap s2] all     off -> GSM strict 97.0 (subset n=100) steps 96% tok 271 | recall 0.0 | 69s
+2026-10-17 15:56:51 shared-direction stats: {'cos_seed_pairs': 0.2548325655488519, 'cos_own_vs_shared': 0.6214715256170916, 'energy_shared': 0.08665531012588003, 'energy_own_top1': 0.392159274887877, 'note': 'means over all 168 matrices; cos = |cosine| of top-1 left singular vectors; energy = fraction of ||dW||_F^2 at night 7'}
+2026-10-17 15:57:10 [shared s0] merged_unedited      GSM strict 2.0 steps 1% tok 6 | recall 87.0 | mult 56.6 arc 60.4
+2026-10-17 15:58:09 [shared s0] minus_shared_top1    GSM strict 33.0 steps 66% tok 169 | recall 10.4 | mult 64.5 arc 87.3
+2026-10-17 15:58:55 [shared s0] minus_own_top1       GSM strict 8.0 steps 23% tok 35 | recall 11.1 | mult 77.6 arc 89.6
+2026-10-17 15:59:15 [shared s0] minus_random_rank1   GSM strict 3.0 steps 5% tok 7 | recall 85.8 | mult 53.9 arc 64.2
+2026-10-17 16:00:08 [shared s0] base_no_adapter      GSM strict 97.0 steps 96% tok 271 | recall 0.0 | mult 100.0 arc 100.0
+2026-10-17 16:01:05 [shared s1] merged_unedited      GSM strict 0.0 steps 1% tok 9 | recall 84.3 | mult 60.5 arc 55.2
+2026-10-17 16:02:03 [shared s1] minus_shared_top1    GSM strict 3.0 steps 8% tok 21 | recall 4.9 | mult 65.8 arc 83.6
+2026-10-17 16:02:40 [shared s1] minus_own_top1       GSM strict 2.0 steps 6% tok 20 | recall 6.4 | mult 75.0 arc 89.6
+2026-10-17 16:03:40 [shared s1] minus_random_rank1   GSM strict 0.0 steps 0% tok 10 | recall 80.0 | mult 59.2 arc 59.0
+2026-10-17 16:04:35 [shared s1] base_no_adapter      GSM strict 97.0 steps 96% tok 271 | recall 0.0 | mult 100.0 arc 100.0
+2026-10-17 16:04:44 [shared s2] merged_unedited      GSM strict 3.0 steps 3% tok 5 | recall 89.7 | mult 39.5 arc 67.9
+2026-10-17 16:05:24 [shared s2] minus_shared_top1    GSM strict 5.0 steps 12% tok 16 | recall 5.2 | mult 59.2 arc 90.3
+2026-10-17 16:06:24 [shared s2] minus_own_top1       GSM strict 6.0 steps 8% tok 19 | recall 6.6 | mult 72.4 arc 93.3
+2026-10-17 16:06:33 [shared s2] minus_random_rank1   GSM strict 2.0 steps 2% tok 4 | recall 86.6 | mult 50.0 arc 70.1
+2026-10-17 16:07:26 [shared s2] base_no_adapter      GSM strict 97.0 steps 96% tok 271 | recall 0.0 | mult 100.0 arc 100.0
+# Phase 1 report (auto-generated from results.json; numbers are mean ± std over seeds)
+
+Base on its base-correct GSM8K items: lenient 98.0, mean tokens 270, reasoning steps present 95%
+
+| night | recall | GSM strict | GSM lenient | tokens | % steps | % trunc | fail: no_steps / fact_style / reasoning_wrong / truncated | mult | arc |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 86.0±2.3 | 8.0±12.1 | 8.0±12.1 | 25 | 16 | 0 | 89 / 0 / 11 / 0 | 75.9 | 81.1 |
+| 2 | 87.4±3.0 | 2.7±1.5 | 2.7±1.5 | 14 | 4 | 1 | 97 / 0 / 1 / 1 | 63.2 | 76.4 |
+| 3 | 88.9±0.6 | 2.3±2.3 | 2.3±2.3 | 14 | 4 | 1 | 97 / 0 / 2 / 1 | 64.0 | 76.4 |
+| 4 | 89.4±1.6 | 1.7±2.1 | 1.7±2.1 | 10 | 3 | 0 | 97 / 0 / 3 / 0 | 59.6 | 79.4 |
+| 5 | 86.9±1.6 | 2.3±2.5 | 2.3±2.5 | 12 | 2 | 0 | 99 / 0 / 1 / 0 | 61.0 | 69.9 |
+| 6 | 86.4±1.0 | 3.3±2.5 | 3.3±2.5 | 9 | 2 | 0 | 99 / 0 / 1 / 0 | 45.6 | 63.7 |
+| 7 | 87.0±2.6 | 1.7±1.5 | 1.7±1.5 | 7 | 2 | 0 | 98 / 0 / 1 / 0 | 52.6 | 61.4 |
+
+Prefill test at night 7: strict 30.0±7.2 (trained 1.7)
+
+## Evidence vs pre-registered rules
+```
+{
+ "H1": {
+  "short_fail_share": 98.29560277719334,
+  "token_ratio_vs_base": 0.025054022349817868,
+  "steps_drop_pts": 93.33333333333333,
+  "prefill_gain_pts": 28.333333333333332,
+  "F1": true,
+  "F2": true,
+  "F3": true,
+  "F4_capability_intact": true,
+  "supported": true,
+  "pure_format": true,
+  "restoration_pts": 28.333333333333332
+ },
+ "H2": {
+  "best_block": "B9-11",
+  "best_block_layers": [
+   9,
+   10,
+   11
+  ],
+  "best_block_gain": 1.6666666666666667,
+  "best_block_recall_cost": 0.6666666666666666,
+  "best_block_top2_in_seeds": 2,
+  "median_block_gain": 0.8333333333333333,
+  "best_single": "L0",
+  "best_single_gain": 1.3333333333333333,
+  "all_off_gain": 95.33333333333333,
+  "reasoning_wrong_share_night_last": 1.3710638894733151,
+  "L1": false,
+  "L2": true,
+  "L3": true,
+  "supported": false,
+  "restoration_pts": 1.6666666666666667
+ },
+ "H3": {
+  "best_edit": "minus_shared_top1",
+  "edit_gain": 12.0,
+  "random_gain": 0.0,
+  "edit_recall_change": -80.14285714285715,
+  "merge_sanity_abs_diff": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "S1": false,
+  "S2": true,
+  "S3_valid": true,
+  "supported": false,
+  "restoration_pts": 12.0
+ }
+}
+```
+
+## Phase-2 choice
+```
+{
+ "mechanism": "H1",
+ "reason": "supported hypotheses ['H1']; H1 has the largest GSM8K restoration (28.3 pts)",
+ "protect_layers": [
+  9,
+  10,
+  11
+ ],
+ "edit": "minus_shared_top1"
+}
+```
+
+## Layer swap (top 10 by GSM gain)
+| config | layers off | GSM gain | recall cost |
+|---|---|---|---|
+| all | all | 95.3±1.5 | 87.0 |
+| B9-11 | [9, 10, 11] | 1.7±1.2 | 0.7 |
+| B21-23 | [21, 22, 23] | 1.7±2.1 | 69.4 |
+| L0 | [0] | 1.3±0.6 | 5.0 |
+| L17 | [17] | 1.3±0.6 | 2.3 |
+| L21 | [21] | 1.3±0.6 | 14.1 |
+| B15-17 | [15, 16, 17] | 1.3±2.1 | 11.5 |
+| L10 | [10] | 1.0±0.0 | 0.0 |
+| L13 | [13] | 1.0±0.0 | 0.7 |
+| L14 | [14] | 1.0±1.0 | 0.7 |
+
+## Shared-direction edits (change vs merged unedited night-7 model)
+| edit | GSM gain | recall change | mult | arc |
+|---|---|---|---|---|
+| minus_shared_top1 | 12.0±16.5 | -80.1 | 11.0 | 25.9 |
+| minus_own_top1 | 3.7±2.1 | -79.0 | 22.8 | 29.6 |
+| minus_random_rank1 | 0.0±1.0 | -2.9 | 2.2 | 3.2 |
+| base_no_adapter | 95.3±1.5 | -87.0 | 47.8 | 38.8 |
+
+shared stats: {'cos_seed_pairs': 0.2548325655488519, 'cos_own_vs_shared': 0.6214715256170916, 'energy_shared': 0.08665531012588003, 'energy_own_top1': 0.392159274887877, 'note': 'means over all 168 matrices; cos = |cosine| of top-1 left singular vectors; energy = fraction of ||dW||_F^2 at night 7'}
+2026-10-17 16:07:26 PHASE 1 DONE in 134.1 min (this session). Summary: /workspace/mathfix/phase1_out/phase1_summary.json
+2026-10-17 17:20:40 ============================== mathfix phase 2 start | phase2_0p5b | mechanism H1 (phase-1 choice: supported hypotheses ['H1']; H1 has the largest GSM8K restoration (28.3 pts)) | device cuda
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  22%|██▏       | 65/290 [00:00<00:00, 642.25it/s]Loading weights:  45%|████▍     | 130/290 [00:00<00:00, 610.14it/s]Loading weights:  80%|████████  | 233/290 [00:00<00:00, 790.62it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 816.73it/s]
+2026-10-17 17:20:51 GPU: Quadro RTX 5000
+Generating train split:   0%|          | 0/15011 [00:00<?, ? examples/s]Generating train split:  80%|████████  | 12083/15011 [00:00<00:00, 115331.24 examples/s]Generating train split: 100%|██████████| 15011/15011 [00:00<00:00, 109904.56 examples/s]
+2026-10-17 17:21:02 H1 data: {'K': 384, 'replay_gsm8k_train_idx_first10': [3866, 1492, 5992, 4756, 2498, 1646, 7299, 5953, 3374, 6231], 'replay_supervised_tokens': 34379, 'filler_supervised_tokens': 34379, 'replay_total_tokens': 78076, 'filler_total_tokens': 55414, 'dolly_candidates_no_digits': 7706}
+[W1017 17:21:38.906589499 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 264241152 bytes (free: 48758784, total: 16702046208).
+[W1017 17:21:48.713907061 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 299892736 bytes (free: 65536000, total: 16702046208).
+2026-10-17 17:22:41 base acc {'gsm8k_strict': 50.0, 'mult': 38.0, 'arc': 67.0} | base-correct {'gsm8k': 100, 'mult': 76, 'arc': 134} | base recall (all facts) 0.0
+2026-10-17 17:23:54 [b_s0 n1] recall 88.5 (tonight 88.5) | GSM strict 22.0 lenient 22.0 tok 53 steps 41% | mult 78.9 arc 76.9 | loss 0.051 | train 35s total 73s | ETA 75 min
+2026-10-17 17:23:54 RUNTIME ESTIMATE (after first night): ~2.05 h total (crude: first night is arm b; replay/filler arms cost more per step)
+2026-10-17 17:25:45 [b_s0 n2] recall 88.8 (tonight 85.0) | GSM strict 4.0 lenient 4.0 tok 28 steps 9% | mult 60.5 arc 82.8 | loss 0.026 | train 34s total 111s | ETA 93 min
+2026-10-17 17:28:02 [b_s0 n3] recall 88.3 (tonight 85.0) | GSM strict 5.0 lenient 5.0 tok 19 steps 6% | mult 60.5 arc 76.9 | loss 0.046 | train 34s total 137s | ETA 107 min
+2026-10-17 17:29:53 [b_s0 n4] recall 91.0 (tonight 83.0) | GSM strict 4.0 lenient 4.0 tok 14 steps 7% | mult 67.1 arc 76.1 | loss 0.038 | train 35s total 111s | ETA 106 min
+2026-10-17 17:31:33 [b_s0 n5] recall 88.7 (tonight 75.0) | GSM strict 5.0 lenient 5.0 tok 12 steps 2% | mult 69.7 arc 64.2 | loss 0.226 | train 35s total 100s | ETA 103 min
+2026-10-17 17:33:06 [b_s0 n6] recall 86.7 (tonight 68.5) | GSM strict 6.0 lenient 6.0 tok 11 steps 2% | mult 59.2 arc 54.5 | loss 0.055 | train 34s total 92s | ETA 99 min
+2026-10-17 17:34:27 [b_s0 n7] recall 86.9 (tonight 67.0) | GSM strict 2.0 lenient 2.0 tok 6 steps 1% | mult 56.6 arc 60.4 | loss 0.092 | train 35s total 81s | ETA 94 min
+[W1017 17:35:31.590847472 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1090519040 bytes (free: 331874304, total: 16702046208).
+2026-10-17 17:36:00 [r_s0 n1] recall 82.0 (tonight 82.0) | GSM strict 41.0 lenient 41.0 tok 73 steps 99% | mult 81.6 arc 89.6 | loss 0.443 | train 63s total 92s | ETA 91 min
+2026-10-17 17:37:30 [r_s0 n2] recall 76.2 (tonight 69.0) | GSM strict 36.0 lenient 36.0 tok 79 steps 100% | mult 84.2 arc 90.3 | loss 0.271 | train 63s total 90s | ETA 89 min
+[W1017 17:37:43.043306336 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 807403520 bytes (free: 231211008, total: 16702046208).
+2026-10-17 17:38:57 [r_s0 n3] recall 74.3 (tonight 66.0) | GSM strict 38.0 lenient 38.0 tok 76 steps 99% | mult 73.7 arc 91.8 | loss 0.154 | train 62s total 88s | ETA 86 min
+2026-10-17 17:40:37 [r_s0 n4] recall 71.0 (tonight 62.5) | GSM strict 40.0 lenient 40.0 tok 87 steps 100% | mult 69.7 arc 86.6 | loss 0.111 | train 61s total 99s | ETA 85 min
+2026-10-17 17:42:25 [r_s0 n5] recall 68.9 (tonight 49.0) | GSM strict 35.0 lenient 35.0 tok 83 steps 98% | mult 76.3 arc 86.6 | loss 0.102 | train 61s total 109s | ETA 84 min
+[W1017 17:43:09.244222537 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 845152256 bytes (free: 686292992, total: 16702046208).
+2026-10-17 17:44:36 [r_s0 n6] recall 68.6 (tonight 50.0) | GSM strict 36.0 lenient 36.0 tok 95 steps 100% | mult 76.3 arc 88.8 | loss 0.087 | train 62s total 130s | ETA 84 min
+2026-10-17 17:46:29 [r_s0 n7] recall 71.7 (tonight 40.5) | GSM strict 31.0 lenient 31.0 tok 90 steps 99% | mult 68.4 arc 85.8 | loss 0.084 | train 61s total 114s | ETA 83 min
+[W1017 17:47:10.402024857 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1235222528 bytes (free: 1229455360, total: 16702046208).
+2026-10-17 17:48:26 [c_s0 n1] recall 66.0 (tonight 66.0) | GSM strict 39.0 lenient 40.0 tok 166 steps 97% | mult 64.5 arc 92.5 | loss 1.925 | train 61s total 116s | ETA 82 min
+[W1017 17:48:59.288149359 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1235222528 bytes (free: 648544256, total: 16702046208).
+2026-10-17 17:50:37 [c_s0 n2] recall 69.5 (tonight 66.5) | GSM strict 41.0 lenient 41.0 tok 165 steps 97% | mult 51.3 arc 89.6 | loss 1.733 | train 61s total 131s | ETA 82 min
+[W1017 17:51:15.884871189 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 989855744 bytes (free: 799539200, total: 16702046208).
+2026-10-17 17:52:47 [c_s0 n3] recall 66.2 (tonight 56.0) | GSM strict 38.0 lenient 38.0 tok 181 steps 90% | mult 43.4 arc 86.6 | loss 1.131 | train 61s total 130s | ETA 81 min
+[W1017 17:53:17.732727865 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1243611136 bytes (free: 281542656, total: 16702046208).
+2026-10-17 17:55:19 [c_s0 n4] recall 67.0 (tonight 51.5) | GSM strict 35.0 lenient 35.0 tok 179 steps 87% | mult 40.8 arc 87.3 | loss 0.851 | train 64s total 153s | ETA 82 min
+2026-10-17 17:57:41 [c_s0 n5] recall 58.0 (tonight 35.0) | GSM strict 25.0 lenient 26.0 tok 195 steps 92% | mult 35.5 arc 79.1 | loss 0.429 | train 61s total 142s | ETA 81 min
+[W1017 17:57:52.298204555 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1285554176 bytes (free: 436731904, total: 16702046208).
+2026-10-17 18:00:41 [c_s0 n6] recall 63.3 (tonight 39.5) | GSM strict 44.0 lenient 45.0 tok 177 steps 94% | mult 31.6 arc 79.1 | loss 0.319 | train 61s total 180s | ETA 82 min
+2026-10-17 18:03:24 [c_s0 n7] recall 61.6 (tonight 31.0) | GSM strict 22.0 lenient 22.0 tok 134 steps 77% | mult 31.6 arc 80.6 | loss 0.216 | train 61s total 163s | ETA 81 min
+2026-10-17 18:04:40 [b_s1 n1] recall 85.5 (tonight 85.5) | GSM strict 1.0 lenient 1.0 tok 12 steps 5% | mult 69.7 arc 82.1 | loss 0.018 | train 34s total 76s | ETA 78 min
+2026-10-17 18:05:52 [b_s1 n2] recall 84.0 (tonight 82.0) | GSM strict 1.0 lenient 1.0 tok 7 steps 1% | mult 65.8 arc 63.4 | loss 0.011 | train 35s total 72s | ETA 75 min
+2026-10-17 18:07:58 [b_s1 n3] recall 89.0 (tonight 83.5) | GSM strict 1.0 lenient 1.0 tok 14 steps 5% | mult 68.4 arc 65.7 | loss 0.034 | train 34s total 126s | ETA 74 min
+2026-10-17 18:09:58 [b_s1 n4] recall 89.2 (tonight 81.5) | GSM strict 0.0 lenient 0.0 tok 8 steps 2% | mult 63.2 arc 73.1 | loss 0.022 | train 34s total 120s | ETA 72 min
+2026-10-17 18:11:44 [b_s1 n5] recall 86.6 (tonight 70.0) | GSM strict 0.0 lenient 0.0 tok 9 steps 1% | mult 65.8 arc 73.1 | loss 0.070 | train 36s total 106s | ETA 70 min
+2026-10-17 18:13:27 [b_s1 n6] recall 85.3 (tonight 64.5) | GSM strict 1.0 lenient 1.0 tok 10 steps 2% | mult 57.9 arc 64.9 | loss 0.068 | train 34s total 104s | ETA 68 min
+2026-10-17 18:15:33 [b_s1 n7] recall 84.4 (tonight 60.0) | GSM strict 0.0 lenient 0.0 tok 9 steps 1% | mult 60.5 arc 55.2 | loss 0.147 | train 34s total 125s | ETA 66 min
+[W1017 18:16:24.887112731 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 832569344 bytes (free: 227016704, total: 16702046208).
+2026-10-17 18:17:08 [r_s1 n1] recall 72.0 (tonight 72.0) | GSM strict 37.0 lenient 37.0 tok 78 steps 99% | mult 82.9 arc 92.5 | loss 0.376 | train 61s total 95s | ETA 64 min
+[W1017 18:17:57.386696756 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 926941184 bytes (free: 329777152, total: 16702046208).
+2026-10-17 18:18:45 [r_s1 n2] recall 74.8 (tonight 69.5) | GSM strict 35.0 lenient 35.0 tok 85 steps 100% | mult 77.6 arc 92.5 | loss 0.263 | train 64s total 97s | ETA 62 min
+[W1017 18:19:45.193130924 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1004535808 bytes (free: 610795520, total: 16702046208).
+2026-10-17 18:20:54 [r_s1 n3] recall 72.2 (tonight 61.5) | GSM strict 38.0 lenient 38.0 tok 80 steps 99% | mult 80.3 arc 95.5 | loss 0.168 | train 62s total 129s | ETA 60 min
+2026-10-17 18:22:28 [r_s1 n4] recall 69.4 (tonight 54.0) | GSM strict 37.0 lenient 37.0 tok 75 steps 98% | mult 82.9 arc 90.3 | loss 0.103 | train 61s total 94s | ETA 58 min
+[W1017 18:23:32.045576813 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1090519040 bytes (free: 178782208, total: 16702046208).
+2026-10-17 18:24:02 [r_s1 n5] recall 69.7 (tonight 51.5) | GSM strict 40.0 lenient 40.0 tok 81 steps 99% | mult 82.9 arc 89.6 | loss 0.085 | train 62s total 94s | ETA 56 min
+[W1017 18:24:38.633022963 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1004535808 bytes (free: 841482240, total: 16702046208).
+2026-10-17 18:25:46 [r_s1 n6] recall 68.2 (tonight 51.0) | GSM strict 44.0 lenient 44.0 tok 91 steps 98% | mult 72.4 arc 88.1 | loss 0.078 | train 62s total 104s | ETA 54 min
+2026-10-17 18:27:38 [r_s1 n7] recall 67.9 (tonight 43.0) | GSM strict 33.0 lenient 33.0 tok 75 steps 99% | mult 59.2 arc 87.3 | loss 0.089 | train 62s total 112s | ETA 52 min
+[W1017 18:27:57.728100346 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1235222528 bytes (free: 17301504, total: 16702046208).
+[W1017 18:28:22.074281873 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1285554176 bytes (free: 256376832, total: 16702046208).
+2026-10-17 18:29:34 [c_s1 n1] recall 58.5 (tonight 58.5) | GSM strict 39.0 lenient 39.0 tok 155 steps 98% | mult 77.6 arc 93.3 | loss 1.927 | train 61s total 116s | ETA 50 min
+[W1017 18:29:45.759352685 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1235222528 bytes (free: 1028128768, total: 16702046208).
+[W1017 18:29:47.328250992 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1243611136 bytes (free: 1189609472, total: 16702046208).
+2026-10-17 18:31:42 [c_s1 n2] recall 68.5 (tonight 61.5) | GSM strict 33.0 lenient 33.0 tok 184 steps 95% | mult 72.4 arc 88.8 | loss 1.497 | train 61s total 128s | ETA 48 min
+[W1017 18:32:44.642358892 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1285554176 bytes (free: 795344896, total: 16702046208).
+2026-10-17 18:34:08 [c_s1 n3] recall 68.7 (tonight 57.5) | GSM strict 29.0 lenient 29.0 tok 169 steps 90% | mult 61.8 arc 81.3 | loss 1.133 | train 62s total 146s | ETA 47 min
+2026-10-17 18:36:22 [c_s1 n4] recall 62.1 (tonight 52.0) | GSM strict 29.0 lenient 29.0 tok 167 steps 88% | mult 60.5 arc 83.6 | loss 0.729 | train 61s total 134s | ETA 45 min
+[W1017 18:37:01.087400062 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1243611136 bytes (free: 80216064, total: 16702046208).
+2026-10-17 18:38:31 [c_s1 n5] recall 60.4 (tonight 42.5) | GSM strict 25.0 lenient 25.0 tok 167 steps 87% | mult 60.5 arc 82.8 | loss 0.535 | train 62s total 129s | ETA 44 min
+[W1017 18:38:49.225683125 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1235222528 bytes (free: 44564480, total: 16702046208).
+2026-10-17 18:40:49 [c_s1 n6] recall 59.4 (tonight 41.5) | GSM strict 18.0 lenient 18.0 tok 173 steps 83% | mult 63.2 arc 81.3 | loss 0.402 | train 61s total 138s | ETA 42 min
+[W1017 18:41:54.711454339 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1090519040 bytes (free: 753401856, total: 16702046208).
+2026-10-17 18:43:30 [c_s1 n7] recall 55.1 (tonight 31.0) | GSM strict 23.0 lenient 23.0 tok 193 steps 89% | mult 59.2 arc 86.6 | loss 0.217 | train 65s total 161s | ETA 40 min
+2026-10-17 18:44:51 [b_s2 n1] recall 84.0 (tonight 84.0) | GSM strict 1.0 lenient 1.0 tok 10 steps 2% | mult 78.9 arc 84.3 | loss 0.035 | train 35s total 81s | ETA 38 min
+2026-10-17 18:45:48 [b_s2 n2] recall 89.5 (tonight 86.5) | GSM strict 3.0 lenient 3.0 tok 7 steps 2% | mult 63.2 arc 82.8 | loss 0.048 | train 34s total 57s | ETA 36 min
+2026-10-17 18:46:59 [b_s2 n3] recall 89.5 (tonight 85.0) | GSM strict 1.0 lenient 1.0 tok 8 steps 2% | mult 63.2 arc 86.6 | loss 0.027 | train 35s total 70s | ETA 34 min
+2026-10-17 18:48:08 [b_s2 n4] recall 87.9 (tonight 79.0) | GSM strict 1.0 lenient 1.0 tok 7 steps 1% | mult 48.7 arc 88.8 | loss 0.096 | train 34s total 70s | ETA 32 min
+2026-10-17 18:50:07 [b_s2 n5] recall 85.5 (tonight 72.0) | GSM strict 2.0 lenient 2.0 tok 14 steps 2% | mult 47.4 arc 72.4 | loss 0.100 | train 34s total 119s | ETA 30 min
+2026-10-17 18:51:23 [b_s2 n6] recall 87.2 (tonight 72.0) | GSM strict 3.0 lenient 3.0 tok 7 steps 1% | mult 19.7 arc 71.6 | loss 0.107 | train 36s total 76s | ETA 28 min
+2026-10-17 18:52:31 [b_s2 n7] recall 89.6 (tonight 71.0) | GSM strict 3.0 lenient 3.0 tok 5 steps 3% | mult 40.8 arc 68.7 | loss 0.073 | train 35s total 68s | ETA 26 min
+[W1017 18:53:35.929231461 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 889192448 bytes (free: 579338240, total: 16702046208).
+2026-10-17 18:54:13 [r_s2 n1] recall 77.5 (tonight 77.5) | GSM strict 40.0 lenient 40.0 tok 78 steps 100% | mult 88.2 arc 96.3 | loss 0.411 | train 67s total 103s | ETA 24 min
+[W1017 18:55:03.274141399 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1004535808 bytes (free: 686292992, total: 16702046208).
+2026-10-17 18:55:45 [r_s2 n2] recall 82.2 (tonight 78.0) | GSM strict 40.0 lenient 40.0 tok 89 steps 98% | mult 75.0 arc 94.0 | loss 0.315 | train 62s total 92s | ETA 22 min
+[W1017 18:56:24.958591246 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 832569344 bytes (free: 459800576, total: 16702046208).
+2026-10-17 18:57:58 [r_s2 n3] recall 77.3 (tonight 66.0) | GSM strict 36.0 lenient 36.0 tok 95 steps 99% | mult 80.3 arc 90.3 | loss 0.170 | train 62s total 133s | ETA 20 min
+[W1017 18:59:01.671683204 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1090519040 bytes (free: 438829056, total: 16702046208).
+2026-10-17 19:00:24 [r_s2 n4] recall 76.2 (tonight 64.0) | GSM strict 42.0 lenient 42.0 tok 92 steps 99% | mult 68.4 arc 91.8 | loss 0.090 | train 62s total 146s | ETA 18 min
+2026-10-17 19:01:56 [r_s2 n5] recall 71.7 (tonight 53.5) | GSM strict 42.0 lenient 42.0 tok 82 steps 99% | mult 75.0 arc 88.8 | loss 0.120 | train 60s total 92s | ETA 17 min
+[W1017 19:03:00.027033730 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1090519040 bytes (free: 300417024, total: 16702046208).
+2026-10-17 19:03:42 [r_s2 n6] recall 75.2 (tonight 58.5) | GSM strict 42.0 lenient 42.0 tok 84 steps 99% | mult 77.6 arc 90.3 | loss 0.080 | train 63s total 106s | ETA 15 min
+2026-10-17 19:05:33 [r_s2 n7] recall 73.3 (tonight 51.0) | GSM strict 30.0 lenient 30.0 tok 82 steps 100% | mult 76.3 arc 92.5 | loss 0.077 | train 61s total 111s | ETA 13 min
+[W1017 19:06:03.674836893 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 964689920 bytes (free: 948436992, total: 16702046208).
+2026-10-17 19:08:02 [c_s2 n1] recall 59.5 (tonight 59.5) | GSM strict 46.0 lenient 46.0 tok 174 steps 97% | mult 59.2 arc 95.5 | loss 2.050 | train 61s total 149s | ETA 11 min
+[W1017 19:08:48.453061479 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1285554176 bytes (free: 644349952, total: 16702046208).
+2026-10-17 19:10:54 [c_s2 n2] recall 77.2 (tonight 74.0) | GSM strict 34.0 lenient 34.0 tok 148 steps 94% | mult 53.9 arc 86.6 | loss 1.360 | train 61s total 172s | ETA 9 min
+[W1017 19:11:57.158352890 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1090519040 bytes (free: 256376832, total: 16702046208).
+2026-10-17 19:13:04 [c_s2 n3] recall 71.2 (tonight 62.5) | GSM strict 26.0 lenient 25.0 tok 164 steps 93% | mult 51.3 arc 85.1 | loss 1.206 | train 61s total 130s | ETA 7 min
+[W1017 19:13:27.094809558 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1235222528 bytes (free: 463994880, total: 16702046208).
+2026-10-17 19:15:28 [c_s2 n4] recall 65.8 (tonight 51.5) | GSM strict 36.0 lenient 34.0 tok 184 steps 91% | mult 57.9 arc 84.3 | loss 0.727 | train 63s total 144s | ETA 6 min
+[W1017 19:15:59.950417811 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1285554176 bytes (free: 1200095232, total: 16702046208).
+2026-10-17 19:17:25 [c_s2 n5] recall 62.8 (tonight 41.5) | GSM strict 22.0 lenient 22.0 tok 144 steps 85% | mult 44.7 arc 82.8 | loss 0.428 | train 61s total 118s | ETA 4 min
+2026-10-17 19:19:39 [c_s2 n6] recall 59.3 (tonight 42.5) | GSM strict 32.0 lenient 32.0 tok 148 steps 90% | mult 43.4 arc 80.6 | loss 0.257 | train 60s total 134s | ETA 2 min
+[W1017 19:20:15.580703241 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 2621440, total: 16702046208).
+2026-10-17 19:22:12 [c_s2 n7] recall 60.9 (tonight 36.0) | GSM strict 35.0 lenient 36.0 tok 188 steps 88% | mult 36.8 arc 77.6 | loss 0.197 | train 61s total 153s | ETA 0 min
+{
+ "verdict": "FAIL",
+ "fails": [
+  "P1: r GSM8K strict retention 31.3 < 50",
+  "P2: r - c = 4.7 <= combined std 7.4",
+  "P3: |recall r - b| = 16.0 > 5"
+ ],
+ "mechanism": "H1",
+ "fix": "r",
+ "controls": [
+  "c"
+ ],
+ "best_control": "c",
+ "combined_std": 7.393691004272945,
+ "night_final": {
+  "b": {
+   "strict": [
+    1.6666666666666667,
+    1.5275252316519468
+   ],
+   "lenient": [
+    1.6666666666666667,
+    1.5275252316519468
+   ],
+   "mean_tokens": [
+    6.763333333333333,
+    2.473708417201456
+   ],
+   "pct_steps": [
+    1.6666666666666667,
+    1.1547005383792517
+   ],
+   "recall": [
+    86.95238095238096,
+    2.6441438309289285
+   ],
+   "mult": [
+    52.63157894736842,
+    10.443755175254962
+   ],
+   "arc": [
+    61.44278606965174,
+    6.771471437221988
+   ]
+  },
+  "r": {
+   "strict": [
+    31.333333333333332,
+    1.5275252316519465
+   ],
+   "lenient": [
+    31.333333333333332,
+    1.5275252316519465
+   ],
+   "mean_tokens": [
+    82.30666666666666,
+    7.427828305321367
+   ],
+   "pct_steps": [
+    99.33333333333333,
+    0.5773502691896257
+   ],
+   "recall": [
+    70.97619047619048,
+    2.7537852736430533
+   ],
+   "mult": [
+    67.98245614035088,
+    8.561061971904891
+   ],
+   "arc": [
+    88.55721393034825,
+    3.526728079292991
+   ]
+  },
+  "c": {
+   "strict": [
+    26.666666666666668,
+    7.234178138070235
+   ],
+   "lenient": [
+    27.0,
+    7.810249675906654
+   ],
+   "mean_tokens": [
+    171.59333333333333,
+    32.83975081107244
+   ],
+   "pct_steps": [
+    84.66666666666667,
+    6.6583281184793925
+   ],
+   "recall": [
+    59.166666666666664,
+    3.5645171219851344
+   ],
+   "mult": [
+    42.5438596491228,
+    14.67169182778748
+   ],
+   "arc": [
+    81.59203980099501,
+    4.559776810901328
+   ]
+  }
+ },
+ "b_lenient_minus_strict": 0.0,
+ "b_format_loss_parser_level": false,
+ "config": "phase2_0p5b"
+}
+2026-10-17 19:22:12 VERDICT (phase2_0p5b, H1): FAIL | P1: r GSM8K strict retention 31.3 < 50 ; P2: r - c = 4.7 <= combined std 7.4 ; P3: |recall r - b| = 16.0 > 5
+2026-10-17 19:22:12 PHASE 2 DONE in 121.5 min (this session)
+2026-10-17 19:22:17 ============================== mathfix phase 2 start | phase2_1p5b | mechanism H1 (phase-1 choice: supported hypotheses ['H1']; H1 has the largest GSM8K restoration (28.3 pts)) | device cuda
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  19%|█▊        | 63/338 [00:00<00:00, 519.51it/s]Loading weights:  34%|███▍      | 115/338 [00:00<00:00, 485.99it/s]Loading weights:  49%|████▊     | 164/338 [00:00<00:00, 460.81it/s]Loading weights:  62%|██████▏   | 210/338 [00:00<00:00, 447.29it/s]Loading weights:  75%|███████▌  | 255/338 [00:00<00:00, 448.14it/s]Loading weights:  90%|████████▉ | 303/338 [00:00<00:00, 445.01it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 467.04it/s]
+2026-10-17 19:22:59 GPU: Quadro RTX 5000
+2026-10-17 19:23:08 H1 data: {'K': 384, 'replay_gsm8k_train_idx_first10': [3866, 1492, 5992, 4756, 2498, 1646, 7299, 5953, 3374, 6231], 'replay_supervised_tokens': 34379, 'filler_supervised_tokens': 34379, 'replay_total_tokens': 78076, 'filler_total_tokens': 55414, 'dolly_candidates_no_digits': 7706}
+[W1017 19:23:53.646518255 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 184549376 bytes (free: 69730304, total: 16702046208).
+[W1017 19:23:53.660841057 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 184549376 bytes (free: 128450560, total: 16702046208).
+[W1017 19:23:53.684744830 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 184549376 bytes (free: 90701824, total: 16702046208).
+[W1017 19:23:53.684959838 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 184549376 bytes (free: 90701824, total: 16702046208).
+Traceback (most recent call last):
+  File "/workspace/mathfix/phase2.py", line 126, in <module>
+    outs, nt, tr = gen(base, [x["q"] for x in GSM], MAXG, CFG["gen_bs"])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mathfix/common.py", line 162, in __call__
+    g = model.generate(**enc, max_new_tokens=max_new, do_sample=False, temperature=None, top_p=None, top_k=None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/generation/utils.py", line 2989, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/generation/utils.py", line 3217, in _sample
+    outputs = model_forward(**model_inputs, return_dict=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/utils/generic.py", line 943, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 444, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/utils/generic.py", line 1081, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 287, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 380, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/modeling_layers.py", line 111, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 274, in forward
+    hidden_states, _ = self.self_attn(
+                       ^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 212, in forward
+    attn_output, attn_weights = attention_interface(
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/integrations/sdpa_attention.py", line 170, in sdpa_attention_forward
+    attn_output = torch.nn.functional.scaled_dot_product_attention(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 176.00 MiB. GPU 0 has a total capacity of 15.55 GiB of which 86.50 MiB is free. Including non-PyTorch memory, this process has 15.47 GiB memory in use. Of the allocated memory 12.82 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+nohup: ignoring input
+2026-10-17 20:22:05 ============================== mathfix phase 2 start | phase2_1p5b | mechanism H1 (phase-1 choice: supported hypotheses ['H1']; H1 has the largest GSM8K restoration (28.3 pts)) | device cuda
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  19%|█▊        | 63/338 [00:00<00:00, 629.49it/s]Loading weights:  37%|███▋      | 126/338 [00:00<00:00, 456.35it/s]Loading weights:  53%|█████▎    | 180/338 [00:00<00:00, 477.57it/s]Loading weights:  68%|██████▊   | 230/338 [00:00<00:00, 483.05it/s]Loading weights:  83%|████████▎ | 280/338 [00:00<00:00, 458.31it/s]Loading weights:  97%|█████████▋| 327/338 [00:00<00:00, 447.93it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 476.28it/s]
+2026-10-17 20:22:18 GPU: Quadro RTX 5000
+2026-10-17 20:22:27 H1 data: {'K': 384, 'replay_gsm8k_train_idx_first10': [3866, 1492, 5992, 4756, 2498, 1646, 7299, 5953, 3374, 6231], 'replay_supervised_tokens': 34379, 'filler_supervised_tokens': 34379, 'replay_total_tokens': 78076, 'filler_total_tokens': 55414, 'dolly_candidates_no_digits': 7706}
+2026-10-17 20:27:14 base acc {'gsm8k_strict': 73.5, 'mult': 73.5, 'arc': 89.5} | base-correct {'gsm8k': 147, 'mult': 147, 'arc': 179} | base recall (all facts) 0.0
+[W1017 20:27:56.054073854 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1235746816, total: 16702046208).
+2026-10-17 20:28:54 [b_s0 n1] recall 83.5 (tonight 83.5) | GSM strict 7.5 lenient 7.5 tok 5 steps 1% | mult 86.4 arc 84.9 | loss 0.036 | train 40s total 100s | ETA 103 min
+2026-10-17 20:28:54 RUNTIME ESTIMATE (after first night): ~2.86 h total (crude: first night is arm b; replay/filler arms cost more per step)
+[W1017 20:29:34.676976621 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1822949376, total: 16702046208).
+2026-10-17 20:30:07 [b_s0 n2] recall 89.8 (tonight 90.0) | GSM strict 6.8 lenient 6.8 tok 4 steps 0% | mult 78.2 arc 88.8 | loss 0.037 | train 39s total 74s | ETA 88 min
+[W1017 20:30:51.066839436 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1598554112, total: 16702046208).
+2026-10-17 20:31:27 [b_s0 n3] recall 84.5 (tonight 83.5) | GSM strict 6.8 lenient 6.8 tok 4 steps 0% | mult 81.0 arc 85.5 | loss 0.030 | train 42s total 80s | ETA 84 min
+[W1017 20:32:09.746593753 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1822949376, total: 16702046208).
+2026-10-17 20:32:54 [b_s0 n4] recall 90.4 (tonight 86.0) | GSM strict 7.5 lenient 7.5 tok 4 steps 1% | mult 78.2 arc 77.1 | loss 0.051 | train 40s total 87s | ETA 84 min
+[W1017 20:33:37.233360687 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1822949376, total: 16702046208).
+2026-10-17 20:34:28 [b_s0 n5] recall 86.8 (tonight 70.0) | GSM strict 7.5 lenient 7.5 tok 4 steps 1% | mult 76.9 arc 85.5 | loss 0.234 | train 42s total 94s | ETA 84 min
+[W1017 20:35:09.322760745 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1600651264, total: 16702046208).
+2026-10-17 20:36:11 [b_s0 n6] recall 85.0 (tonight 70.5) | GSM strict 5.4 lenient 5.4 tok 4 steps 1% | mult 71.4 arc 91.6 | loss 0.066 | train 40s total 103s | ETA 85 min
+[W1017 20:36:52.695220980 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1822949376, total: 16702046208).
+2026-10-17 20:39:09 [b_s0 n7] recall 88.5 (tonight 70.0) | GSM strict 4.1 lenient 4.1 tok 4 steps 1% | mult 66.7 arc 86.6 | loss 0.070 | train 40s total 178s | ETA 95 min
+[W1017 20:39:10.027927168 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 29360128 bytes (free: 29884416, total: 16702046208).
+[W1017 20:39:10.028443974 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 29360128 bytes (free: 29884416, total: 16702046208).
+Traceback (most recent call last):
+  File "/workspace/mathfix/phase2.py", line 197, in <module>
+    t0 = time.time(); loss, ntrain, tt, layers, nedit = train_one(arm, seed, night)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mathfix/phase2.py", line 180, in train_one
+    t = time.time(); loss = TR.train_night(model, seen, seed, night, extra=EXTRA.get(ex), extra_slots=CFG["replay_slots"] if ex else None); tt = time.time() - t
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/mathfix/common.py", line 264, in train_night
+    logits = model(input_ids=ids, attention_mask=att).logits
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/peft/peft_model.py", line 2120, in forward
+    return self.base_model(
+           ^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/peft/tuners/tuners_utils.py", line 359, in forward
+    return self.model(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/utils/generic.py", line 943, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 444, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/utils/generic.py", line 1081, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 287, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 380, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/modeling_layers.py", line 111, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 288, in forward
+    hidden_states = self.mlp(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 46, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+                                           ^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/peft/tuners/lora/layer.py", line 1088, in forward
+    result = self.base_layer(x, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 28.00 MiB. GPU 0 has a total capacity of 15.55 GiB of which 28.50 MiB is free. Including non-PyTorch memory, this process has 15.52 GiB memory in use. Of the allocated memory 14.83 GiB is allocated by PyTorch, and 555.63 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+nohup: ignoring input
+2026-10-17 20:56:51 ============================== mathfix phase 2 start | phase2_1p5b | mechanism H1 (phase-1 choice: supported hypotheses ['H1']; H1 has the largest GSM8K restoration (28.3 pts)) | device cuda
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 51/338 [00:00<00:00, 493.39it/s]Loading weights:  30%|██▉       | 101/338 [00:00<00:00, 461.12it/s]Loading weights:  44%|████▍     | 148/338 [00:00<00:00, 425.80it/s]Loading weights:  57%|█████▋    | 191/338 [00:00<00:00, 424.71it/s]Loading weights:  72%|███████▏  | 244/338 [00:00<00:00, 455.42it/s]Loading weights:  86%|████████▌ | 291/338 [00:00<00:00, 459.11it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 466.67it/s]
+2026-10-17 20:57:04 GPU: Quadro RTX 5000
+2026-10-17 20:57:12 H1 data: {'K': 384, 'replay_gsm8k_train_idx_first10': [3866, 1492, 5992, 4756, 2498, 1646, 7299, 5953, 3374, 6231], 'replay_supervised_tokens': 34379, 'filler_supervised_tokens': 34379, 'replay_total_tokens': 78076, 'filler_total_tokens': 55414, 'dolly_candidates_no_digits': 7706}
+2026-10-17 20:57:12 base acc {'gsm8k_strict': 73.5, 'mult': 73.5, 'arc': 89.5} | base-correct {'gsm8k': 147, 'mult': 147, 'arc': 179} | base recall (all facts) 0.0
+2026-10-17 21:01:55 [r_s0 n1] recall 75.5 (tonight 75.5) | GSM strict 55.1 lenient 54.4 tok 81 steps 99% | mult 91.2 arc 92.2 | loss 0.343 | train 148s total 282s | ETA 259 min
+2026-10-17 21:01:55 RUNTIME ESTIMATE (after first night): ~6.99 h total (crude: first night is arm b; replay/filler arms cost more per step)
+2026-10-17 21:07:08 [r_s0 n2] recall 80.2 (tonight 76.5) | GSM strict 44.9 lenient 44.9 tok 90 steps 100% | mult 85.7 arc 97.8 | loss 0.207 | train 149s total 313s | ETA 268 min
+2026-10-17 21:11:54 [r_s0 n3] recall 78.0 (tonight 67.5) | GSM strict 55.1 lenient 55.1 tok 90 steps 99% | mult 83.7 arc 97.8 | loss 0.109 | train 156s total 286s | ETA 260 min
+2026-10-17 21:16:36 [r_s0 n4] recall 70.4 (tonight 62.5) | GSM strict 53.1 lenient 53.1 tok 90 steps 100% | mult 84.4 arc 96.6 | loss 0.075 | train 146s total 282s | ETA 252 min
+2026-10-17 21:22:01 [r_s0 n5] recall 69.8 (tonight 57.0) | GSM strict 53.1 lenient 52.4 tok 90 steps 99% | mult 85.0 arc 98.3 | loss 0.064 | train 147s total 325s | ETA 253 min
+2026-10-17 21:27:12 [r_s0 n6] recall 68.8 (tonight 42.5) | GSM strict 53.1 lenient 52.4 tok 89 steps 100% | mult 80.3 arc 97.2 | loss 0.060 | train 154s total 311s | ETA 250 min
+2026-10-17 21:33:33 [r_s0 n7] recall 67.4 (tonight 44.0) | GSM strict 51.0 lenient 51.0 tok 89 steps 99% | mult 81.0 arc 97.8 | loss 0.057 | train 154s total 381s | ETA 254 min
+2026-10-17 21:40:03 [c_s0 n1] recall 77.5 (tonight 77.5) | GSM strict 65.3 lenient 65.3 tok 135 steps 93% | mult 90.5 arc 98.3 | loss 1.727 | train 151s total 390s | ETA 257 min
+2026-10-17 21:45:47 [c_s0 n2] recall 78.8 (tonight 75.5) | GSM strict 59.9 lenient 59.9 tok 117 steps 99% | mult 81.6 arc 97.8 | loss 1.528 | train 155s total 344s | ETA 254 min
+2026-10-17 21:52:28 [c_s0 n3] recall 73.5 (tonight 61.5) | GSM strict 55.1 lenient 55.8 tok 123 steps 98% | mult 78.9 arc 97.8 | loss 0.997 | train 148s total 401s | ETA 254 min
+2026-10-17 21:59:05 [c_s0 n4] recall 71.5 (tonight 61.0) | GSM strict 59.2 lenient 59.2 tok 138 steps 99% | mult 73.5 arc 95.5 | loss 0.675 | train 146s total 397s | ETA 253 min
+2026-10-17 22:07:11 [c_s0 n5] recall 64.9 (tonight 47.5) | GSM strict 61.9 lenient 62.6 tok 123 steps 99% | mult 75.5 arc 94.4 | loss 0.342 | train 148s total 486s | ETA 257 min
+2026-10-17 22:15:16 [c_s0 n6] recall 62.8 (tonight 42.5) | GSM strict 57.8 lenient 57.8 tok 133 steps 99% | mult 72.8 arc 95.5 | loss 0.247 | train 152s total 485s | ETA 258 min
+2026-10-17 22:23:45 [c_s0 n7] recall 63.7 (tonight 39.5) | GSM strict 52.4 lenient 52.4 tok 133 steps 97% | mult 72.1 arc 94.4 | loss 0.177 | train 148s total 510s | ETA 260 min
+[W1017 22:24:26.347873654 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1829240832, total: 16702046208).
+2026-10-17 22:25:29 [b_s1 n1] recall 77.5 (tonight 77.5) | GSM strict 9.5 lenient 9.5 tok 5 steps 1% | mult 76.2 arc 75.4 | loss 0.038 | train 40s total 104s | ETA 241 min
+[W1017 22:26:12.010316759 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1820852224, total: 16702046208).
+2026-10-17 22:28:30 [b_s1 n2] recall 85.8 (tonight 83.5) | GSM strict 12.9 lenient 12.9 tok 17 steps 10% | mult 77.6 arc 79.9 | loss 0.028 | train 41s total 181s | ETA 228 min
+[W1017 22:29:13.277564369 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1820852224, total: 16702046208).
+2026-10-17 22:31:25 [b_s1 n3] recall 87.3 (tonight 80.5) | GSM strict 17.7 lenient 17.7 tok 25 steps 18% | mult 74.8 arc 88.8 | loss 0.025 | train 42s total 176s | ETA 216 min
+[W1017 22:32:08.958786403 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1820852224, total: 16702046208).
+2026-10-17 22:33:08 [b_s1 n4] recall 84.2 (tonight 77.0) | GSM strict 6.1 lenient 6.1 tok 6 steps 1% | mult 74.1 arc 88.3 | loss 0.038 | train 41s total 102s | ETA 203 min
+[W1017 22:33:50.012829971 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1822949376, total: 16702046208).
+2026-10-17 22:36:27 [b_s1 n5] recall 85.6 (tonight 75.0) | GSM strict 13.6 lenient 13.6 tok 18 steps 10% | mult 72.8 arc 81.0 | loss 0.057 | train 40s total 199s | ETA 193 min
+[W1017 22:37:09.719763463 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1818755072, total: 16702046208).
+2026-10-17 22:39:17 [b_s1 n6] recall 84.9 (tonight 72.5) | GSM strict 10.2 lenient 10.2 tok 12 steps 5% | mult 64.6 arc 83.2 | loss 0.061 | train 40s total 170s | ETA 184 min
+[W1017 22:40:00.649456701 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1820852224, total: 16702046208).
+2026-10-17 22:42:09 [b_s1 n7] recall 86.6 (tonight 68.5) | GSM strict 5.4 lenient 5.4 tok 4 steps 1% | mult 63.3 arc 75.4 | loss 0.144 | train 42s total 172s | ETA 175 min
+2026-10-17 22:49:01 [r_s1 n1] recall 74.5 (tonight 74.5) | GSM strict 57.8 lenient 57.8 tok 95 steps 98% | mult 86.4 arc 98.9 | loss 0.295 | train 151s total 412s | ETA 173 min
+2026-10-17 22:54:13 [r_s1 n2] recall 72.2 (tonight 64.5) | GSM strict 59.2 lenient 59.2 tok 96 steps 100% | mult 81.0 arc 98.9 | loss 0.196 | train 147s total 312s | ETA 168 min
+2026-10-17 22:58:54 [r_s1 n3] recall 72.2 (tonight 63.0) | GSM strict 53.7 lenient 53.7 tok 89 steps 99% | mult 78.2 arc 98.9 | loss 0.138 | train 153s total 281s | ETA 162 min
+2026-10-17 23:03:49 [r_s1 n4] recall 70.2 (tonight 56.0) | GSM strict 57.8 lenient 57.8 tok 91 steps 100% | mult 78.9 arc 98.3 | loss 0.075 | train 149s total 295s | ETA 157 min
+2026-10-17 23:08:57 [r_s1 n5] recall 68.9 (tonight 59.0) | GSM strict 57.1 lenient 57.1 tok 89 steps 99% | mult 69.4 arc 98.3 | loss 0.064 | train 148s total 308s | ETA 152 min
+2026-10-17 23:14:25 [r_s1 n6] recall 66.8 (tonight 54.5) | GSM strict 48.3 lenient 48.3 tok 83 steps 95% | mult 74.8 arc 98.9 | loss 0.061 | train 151s total 328s | ETA 147 min
+2026-10-17 23:21:52 [r_s1 n7] recall 63.1 (tonight 40.5) | GSM strict 53.7 lenient 53.7 tok 93 steps 100% | mult 78.9 arc 97.8 | loss 0.068 | train 150s total 448s | ETA 145 min
+2026-10-17 23:27:56 [c_s1 n1] recall 70.0 (tonight 70.0) | GSM strict 63.3 lenient 62.6 tok 115 steps 99% | mult 90.5 arc 98.9 | loss 1.697 | train 147s total 364s | ETA 140 min
+2026-10-17 23:34:33 [c_s1 n2] recall 78.5 (tonight 77.0) | GSM strict 58.5 lenient 57.8 tok 113 steps 99% | mult 83.7 arc 97.2 | loss 1.340 | train 157s total 397s | ETA 136 min
+2026-10-17 23:42:53 [c_s1 n3] recall 79.2 (tonight 70.5) | GSM strict 56.5 lenient 56.5 tok 135 steps 99% | mult 81.0 arc 95.5 | loss 1.031 | train 153s total 499s | ETA 134 min
+2026-10-17 23:50:27 [c_s1 n4] recall 70.5 (tonight 62.5) | GSM strict 61.2 lenient 61.2 tok 134 steps 99% | mult 71.4 arc 95.0 | loss 0.612 | train 149s total 454s | ETA 130 min
+2026-10-17 23:56:23 [c_s1 n5] recall 70.1 (tonight 54.5) | GSM strict 52.4 lenient 52.4 tok 118 steps 97% | mult 74.1 arc 92.7 | loss 0.333 | train 146s total 356s | ETA 125 min
+2026-10-18 00:02:48 [c_s1 n6] recall 68.8 (tonight 50.0) | GSM strict 51.7 lenient 51.7 tok 120 steps 94% | mult 70.7 arc 93.3 | loss 0.232 | train 148s total 385s | ETA 120 min
+2026-10-18 00:12:10 [c_s1 n7] recall 68.0 (tonight 41.0) | GSM strict 56.5 lenient 56.5 tok 161 steps 95% | mult 67.3 arc 94.4 | loss 0.162 | train 149s total 563s | ETA 117 min
+2026-10-18 00:13:30 [b_s2 n1] recall 77.5 (tonight 77.5) | GSM strict 5.4 lenient 5.4 tok 4 steps 0% | mult 82.3 arc 89.9 | loss 0.087 | train 40s total 80s | ETA 109 min
+[W1018 00:14:12.807416779 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1822949376, total: 16702046208).
+2026-10-18 00:17:28 [b_s2 n2] recall 87.5 (tonight 84.5) | GSM strict 12.2 lenient 12.2 tok 29 steps 18% | mult 78.9 arc 95.5 | loss 0.032 | train 40s total 238s | ETA 103 min
+[W1018 00:18:11.458508133 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1820852224, total: 16702046208).
+2026-10-18 00:19:46 [b_s2 n3] recall 86.5 (tonight 84.0) | GSM strict 4.1 lenient 4.1 tok 8 steps 3% | mult 73.5 arc 95.0 | loss 0.032 | train 42s total 138s | ETA 96 min
+2026-10-18 00:21:12 [b_s2 n4] recall 88.4 (tonight 85.0) | GSM strict 5.4 lenient 5.4 tok 4 steps 0% | mult 74.1 arc 82.7 | loss 0.079 | train 40s total 86s | ETA 89 min
+[W1018 00:21:58.464584286 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1820852224, total: 16702046208).
+2026-10-18 00:22:47 [b_s2 n5] recall 87.2 (tonight 76.0) | GSM strict 3.4 lenient 3.4 tok 4 steps 0% | mult 74.1 arc 81.0 | loss 0.052 | train 44s total 95s | ETA 82 min
+2026-10-18 00:24:27 [b_s2 n6] recall 85.2 (tonight 70.5) | GSM strict 4.1 lenient 4.1 tok 4 steps 1% | mult 72.1 arc 83.8 | loss 0.088 | train 40s total 99s | ETA 76 min
+[W1018 00:25:08.440766864 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1868562432 bytes (free: 1820852224, total: 16702046208).
+2026-10-18 00:27:21 [b_s2 n7] recall 89.1 (tonight 74.0) | GSM strict 6.8 lenient 6.8 tok 4 steps 1% | mult 75.5 arc 93.3 | loss 0.089 | train 40s total 174s | ETA 70 min
+2026-10-18 00:32:27 [r_s2 n1] recall 74.0 (tonight 74.0) | GSM strict 51.0 lenient 51.0 tok 89 steps 100% | mult 88.4 arc 98.9 | loss 0.338 | train 147s total 306s | ETA 65 min
+2026-10-18 00:38:09 [r_s2 n2] recall 80.0 (tonight 73.5) | GSM strict 45.6 lenient 45.6 tok 91 steps 100% | mult 84.4 arc 97.8 | loss 0.238 | train 148s total 342s | ETA 60 min
+2026-10-18 00:43:11 [r_s2 n3] recall 72.7 (tonight 67.0) | GSM strict 55.8 lenient 55.8 tok 95 steps 99% | mult 80.3 arc 97.8 | loss 0.126 | train 146s total 302s | ETA 55 min
+2026-10-18 00:47:57 [r_s2 n4] recall 77.4 (tonight 71.5) | GSM strict 48.3 lenient 48.3 tok 93 steps 99% | mult 83.7 arc 97.2 | loss 0.065 | train 147s total 286s | ETA 50 min
+2026-10-18 00:52:56 [r_s2 n5] recall 78.9 (tonight 64.0) | GSM strict 53.1 lenient 53.1 tok 86 steps 100% | mult 83.0 arc 98.3 | loss 0.085 | train 151s total 299s | ETA 45 min
+2026-10-18 00:58:33 [r_s2 n6] recall 73.9 (tonight 59.0) | GSM strict 51.7 lenient 51.7 tok 89 steps 97% | mult 78.2 arc 98.3 | loss 0.055 | train 152s total 338s | ETA 40 min
+2026-10-18 01:04:58 [r_s2 n7] recall 73.4 (tonight 51.0) | GSM strict 55.8 lenient 55.8 tok 92 steps 99% | mult 81.6 arc 97.8 | loss 0.042 | train 150s total 385s | ETA 35 min
+2026-10-18 01:11:26 [c_s2 n1] recall 75.5 (tonight 75.5) | GSM strict 57.1 lenient 57.1 tok 127 steps 97% | mult 87.8 arc 97.8 | loss 1.863 | train 149s total 388s | ETA 31 min
+2026-10-18 01:18:03 [c_s2 n2] recall 81.8 (tonight 76.5) | GSM strict 56.5 lenient 56.5 tok 116 steps 100% | mult 85.0 arc 97.2 | loss 1.247 | train 151s total 397s | ETA 26 min
+2026-10-18 01:24:50 [c_s2 n3] recall 81.2 (tonight 79.0) | GSM strict 59.9 lenient 59.9 tok 130 steps 97% | mult 75.5 arc 93.3 | loss 1.012 | train 152s total 407s | ETA 21 min
+2026-10-18 01:32:23 [c_s2 n4] recall 74.4 (tonight 59.0) | GSM strict 56.5 lenient 57.1 tok 161 steps 95% | mult 77.6 arc 94.4 | loss 0.586 | train 148s total 452s | ETA 16 min
+2026-10-18 01:38:55 [c_s2 n5] recall 74.1 (tonight 55.5) | GSM strict 52.4 lenient 52.4 tok 134 steps 97% | mult 75.5 arc 93.9 | loss 0.359 | train 147s total 392s | ETA 10 min
+2026-10-18 01:48:29 [c_s2 n6] recall 75.0 (tonight 57.5) | GSM strict 47.6 lenient 48.3 tok 149 steps 96% | mult 75.5 arc 92.2 | loss 0.191 | train 160s total 574s | ETA 5 min
+2026-10-18 01:56:24 [c_s2 n7] recall 73.1 (tonight 52.0) | GSM strict 49.7 lenient 50.3 tok 148 steps 97% | mult 74.1 arc 92.7 | loss 0.135 | train 153s total 475s | ETA 0 min
+{
+ "verdict": "FAIL",
+ "fails": [
+  "P2: r - c = 0.7 <= combined std 4.2",
+  "P3: |recall r - b| = 20.1 > 5"
+ ],
+ "mechanism": "H1",
+ "fix": "r",
+ "controls": [
+  "c"
+ ],
+ "best_control": "c",
+ "combined_std": 4.175045950004982,
+ "night_final": {
+  "b": {
+   "strict": [
+    5.442176870748299,
+    1.3605442176870746
+   ],
+   "lenient": [
+    5.442176870748299,
+    1.3605442176870746
+   ],
+   "mean_tokens": [
+    4.172335600907029,
+    0.1982539047110604
+   ],
+   "pct_steps": [
+    0.6802721088435374,
+    0.0
+   ],
+   "recall": [
+    88.09523809523809,
+    1.2982196076395802
+   ],
+   "mult": [
+    68.48072562358276,
+    6.32079812461059
+   ],
+   "arc": [
+    85.1024208566108,
+    9.03117739514498
+   ]
+  },
+  "r": {
+   "strict": [
+    53.51473922902494,
+    2.3890371321661528
+   ],
+   "lenient": [
+    53.51473922902494,
+    2.3890371321661528
+   ],
+   "mean_tokens": [
+    91.07482993197279,
+    2.3039843197516645
+   ],
+   "pct_steps": [
+    99.31972789115646,
+    0.6802721088435391
+   ],
+   "recall": [
+    67.97619047619048,
+    5.1707247613679
+   ],
+   "mult": [
+    80.49886621315191,
+    1.4160993193647196
+   ],
+   "arc": [
+    97.76536312849163,
+    0.0
+   ]
+  },
+  "c": {
+   "strict": [
+    52.83446712018141,
+    3.423961195134128
+   ],
+   "lenient": [
+    53.061224489795926,
+    3.1173984319427492
+   ],
+   "mean_tokens": [
+    147.20861678004533,
+    14.137135242695203
+   ],
+   "pct_steps": [
+    95.9183673469388,
+    1.178265855489035
+   ],
+   "recall": [
+    68.28571428571429,
+    4.720774754816657
+   ],
+   "mult": [
+    71.20181405895693,
+    3.490885332957072
+   ],
+   "arc": [
+    93.85474860335195,
+    0.967626149479816
+   ]
+  }
+ },
+ "b_lenient_minus_strict": 0.0,
+ "b_format_loss_parser_level": false,
+ "config": "phase2_1p5b"
+}
+2026-10-18 01:56:24 VERDICT (phase2_1p5b, H1): FAIL | P2: r - c = 0.7 <= combined std 4.2 ; P3: |recall r - b| = 20.1 > 5
+2026-10-18 01:56:24 PHASE 2 DONE in 299.6 min (this session)

@@ -1,0 +1,9 @@
+2026-10-17 19:03:53 ============================== mathfix phase 2 start | phase2_0p5b | mechanism H1 (override) | device cpu
+2026-10-17 19:04:04 H1 data: {'K': 3, 'replay_gsm8k_train_idx_first10': [3866, 1492, 5992], 'replay_supervised_tokens': 274, 'filler_supervised_tokens': 274, 'replay_total_tokens': 562, 'filler_total_tokens': 391, 'dolly_candidates_no_digits': 7706}
+2026-10-17 19:04:04 base acc {'gsm8k_strict': 0.0, 'mult': 0.0, 'arc': 0.0} | base-correct {'gsm8k': 6, 'mult': 6, 'arc': 6} | base recall (all facts) 0.0
+2026-10-17 19:04:06 [b_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.930 | train 0s total 2s | ETA 0 min
+2026-10-17 19:04:06 RUNTIME ESTIMATE (after first night): ~0.01 h total (crude: first night is arm b; replay/filler arms cost more per step)
+2026-10-17 19:04:08 [r_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.931 | train 1s total 2s | ETA 0 min
+2026-10-17 19:04:10 [c_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.932 | train 0s total 2s | ETA 0 min
+2026-10-17 19:04:10 VERDICT (phase2_0p5b, H1): FAIL | P1: r GSM8K strict retention 0.0 < 50 ; P2: r - c = 0.0 <= combined std 0.0
+2026-10-17 19:04:10 PHASE 2 DONE in 0.3 min (this session)

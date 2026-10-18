@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  31%|███       | 89/290 [00:00<00:00, 880.42it/s]Loading weights:  83%|████████▎ | 240/290 [00:00<00:00, 1224.12it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 1239.77it/s]
+peft vs base max|diff| (should be >0): 19.77642250061035
+1. all-off vs base: 0.0 | none-off vs peft: 0.0
+2. merged vs peft: 0.00020599365234375 | restored vs base: 0.0
+3. combined-batch loss 4.13803243637085 | micro-batch loss 4.13803584759052 | diff 3.411219670290677e-06
+4a. top1 edit error (rel): 1.0655753612809349e-05
+4b. rand edit: removed norm 0.4647277593612671 vs sigma1 0.4648278057575226 | removed rank 1 | |cos| with top1 direction 0.09546823799610138
