@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "apply": {
+    "n_quantized_tensors": 4,
+    "n_protected_tensors": 2,
+    "protect": [
+      1
+    ],
+    "bits": 3
+  },
+  "nll_quant": 3.5627589225769043,
+  "n_used": 4,
+  "nll_notes": [],
+  "smoke_acc": 0.0,
+  "max_abs_quant_err": 0.2559032440185547
+}

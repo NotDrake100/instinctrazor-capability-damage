@@ -1,0 +1,40 @@
+wrote problems.json (lists only; no model scoring)
+loading Qwen/Qwen2.5-0.5B-Instruct fp32 CPU
+n_layers=24 n_block_linears=168
+captured original block Linear weights to disk
+START pilot
+pilot fp32 acc=0.6000
+pilot 4-bit acc=0.3800 drop=0.2200
+pilot 3-bit acc=0.0600 drop=0.5400
+pilot 2-bit acc=0.0000 drop=0.6000
+END pilot 35.8s
+START calibrate
+cal nll_quant=0.666004 n=64 notes=[]
+cal restore 0: nll=0.662239 drop=0.003765
+cal restore 1: nll=0.677647 drop=-0.011643
+cal restore 2: nll=0.698637 drop=-0.032633
+cal restore 3: nll=0.651170 drop=0.014834
+cal restore 4: nll=0.681489 drop=-0.015485
+cal restore 5: nll=0.686322 drop=-0.020318
+cal restore 6: nll=0.655275 drop=0.010729
+cal restore 7: nll=0.667973 drop=-0.001969
+cal restore 8: nll=0.646140 drop=0.019864
+cal restore 9: nll=0.672645 drop=-0.006641
+cal restore 10: nll=0.656101 drop=0.009902
+cal restore 11: nll=0.653043 drop=0.012961
+cal restore 12: nll=0.638036 drop=0.027968
+cal restore 13: nll=0.678471 drop=-0.012467
+cal restore 14: nll=0.681169 drop=-0.015165
+cal restore 15: nll=0.614403 drop=0.051601
+cal restore 16: nll=0.608313 drop=0.057691
+cal restore 17: nll=0.644902 drop=0.021102
+cal restore 18: nll=0.640802 drop=0.025202
+cal restore 19: nll=0.674789 drop=-0.008785
+cal restore 20: nll=0.659538 drop=0.006466
+cal restore 21: nll=0.625105 drop=0.040899
+cal restore 22: nll=0.656236 drop=0.009768
+cal restore 23: nll=0.645851 drop=0.020153
+END calibrate 216.7s
+START test
+END test 499.6s
+VERDICT FAIL R=0.1594202898550725 wall=756.1s
