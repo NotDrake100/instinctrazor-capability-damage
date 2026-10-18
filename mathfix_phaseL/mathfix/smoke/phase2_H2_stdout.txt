@@ -1,0 +1,152 @@
+2026-10-17 19:04:12 ============================== mathfix phase 2 start | phase2_0p5b | mechanism H2 (override) | device cpu
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/27 [00:00<?, ?it/s]Loading weights: 100%|██████████| 27/27 [00:00<00:00, 7833.86it/s]
+2026-10-17 19:04:20 H2 protect layers [0] (phase-1 layers [0, 1] ) | bottom control [1]
+2026-10-17 19:04:21 base acc {'gsm8k_strict': 0.0, 'mult': 0.0, 'arc': 0.0} | base-correct {'gsm8k': 6, 'mult': 6, 'arc': 6} | base recall (all facts) 0.0
+2026-10-17 19:04:22 [b_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.930 | train 0s total 2s | ETA 0 min
+2026-10-17 19:04:22 RUNTIME ESTIMATE (after first night): ~0.00 h total (crude: first night is arm b; replay/filler arms cost more per step)
+2026-10-17 19:04:24 [p_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.930 | train 0s total 1s | ETA 0 min
+2026-10-17 19:04:25 [bot_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.930 | train 0s total 2s | ETA 0 min
+2026-10-17 19:04:27 [rnd_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.930 | train 0s total 2s | ETA 0 min
+{
+ "verdict": "FAIL",
+ "fails": [
+  "P1: p GSM8K strict retention 0.0 < 50",
+  "P2: p - rnd = 0.0 <= combined std 0.0"
+ ],
+ "mechanism": "H2",
+ "fix": "p",
+ "controls": [
+  "rnd",
+  "bot"
+ ],
+ "best_control": "rnd",
+ "combined_std": 0.0,
+ "night_final": {
+  "b": {
+   "strict": [
+    0.0,
+    0.0
+   ],
+   "lenient": [
+    0.0,
+    0.0
+   ],
+   "mean_tokens": [
+    16.0,
+    0.0
+   ],
+   "pct_steps": [
+    0.0,
+    0.0
+   ],
+   "recall": [
+    0.0,
+    0.0
+   ],
+   "mult": [
+    0.0,
+    0.0
+   ],
+   "arc": [
+    0.0,
+    0.0
+   ]
+  },
+  "p": {
+   "strict": [
+    0.0,
+    0.0
+   ],
+   "lenient": [
+    0.0,
+    0.0
+   ],
+   "mean_tokens": [
+    16.0,
+    0.0
+   ],
+   "pct_steps": [
+    0.0,
+    0.0
+   ],
+   "recall": [
+    0.0,
+    0.0
+   ],
+   "mult": [
+    0.0,
+    0.0
+   ],
+   "arc": [
+    0.0,
+    0.0
+   ]
+  },
+  "bot": {
+   "strict": [
+    0.0,
+    0.0
+   ],
+   "lenient": [
+    0.0,
+    0.0
+   ],
+   "mean_tokens": [
+    16.0,
+    0.0
+   ],
+   "pct_steps": [
+    0.0,
+    0.0
+   ],
+   "recall": [
+    0.0,
+    0.0
+   ],
+   "mult": [
+    0.0,
+    0.0
+   ],
+   "arc": [
+    0.0,
+    0.0
+   ]
+  },
+  "rnd": {
+   "strict": [
+    0.0,
+    0.0
+   ],
+   "lenient": [
+    0.0,
+    0.0
+   ],
+   "mean_tokens": [
+    16.0,
+    0.0
+   ],
+   "pct_steps": [
+    0.0,
+    0.0
+   ],
+   "recall": [
+    0.0,
+    0.0
+   ],
+   "mult": [
+    0.0,
+    0.0
+   ],
+   "arc": [
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "b_lenient_minus_strict": 0.0,
+ "b_format_loss_parser_level": false,
+ "config": "phase2_0p5b"
+}
+2026-10-17 19:04:27 VERDICT (phase2_0p5b, H2): FAIL | P1: p GSM8K strict retention 0.0 < 50 ; P2: p - rnd = 0.0 <= combined std 0.0
+2026-10-17 19:04:27 PHASE 2 DONE in 0.2 min (this session)

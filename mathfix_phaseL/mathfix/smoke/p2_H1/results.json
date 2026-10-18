@@ -1,0 +1,331 @@
+{
+ "cfg": {
+  "model": "trl-internal-testing/tiny-Qwen2ForCausalLM-2.5",
+  "n_probe": 6,
+  "n_calib": 3,
+  "nights": 1,
+  "facts_per_night": 10,
+  "seeds": [
+   0
+  ],
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.0,
+  "lr": 0.0002,
+  "steps_per_night": 3,
+  "batch_size": 4,
+  "gsm_max_new": 16,
+  "gen_bs": 8,
+  "recall_bs": 8,
+  "gsm_parser": "v2",
+  "fact_seed": 12345,
+  "probe_seed": 1234,
+  "replay_frac": 0.2,
+  "replay_slots": [
+   1
+  ],
+  "replay_seed": 2024,
+  "filler_seed": 2025,
+  "filler_source": "databricks/databricks-dolly-15k",
+  "replay_K": 3,
+  "mechanism": "H1",
+  "arms": [
+   "b",
+   "r",
+   "c"
+  ],
+  "fix_arm": "r",
+  "control_arms": [
+   "c"
+  ]
+ },
+ "runs": {
+  "b_s0": {
+   "nights": {
+    "1": {
+     "recall": 0.0,
+     "recall_tonight": 0.0,
+     "mult": 0.0,
+     "arc": 0.0,
+     "gsm": {
+      "strict": 0.0,
+      "lenient": 0.0,
+      "mean_tokens": 16.0,
+      "median_tokens": 16.0,
+      "pct_steps": 0.0,
+      "pct_truncated": 100.0,
+      "pct_exact_marker": 0.0,
+      "mean_lines": 1.1666666666666667,
+      "n": 6,
+      "n_fail": 6,
+      "fail_categories": {
+       "truncated": 6,
+       "fact_style": 0,
+       "no_steps": 0,
+       "reasoning_wrong": 0,
+       "other": 0
+      },
+      "fail_category_pct": {
+       "truncated": 100.0,
+       "fact_style": 0.0,
+       "no_steps": 0.0,
+       "reasoning_wrong": 0.0,
+       "other": 0.0
+      }
+     },
+     "recall_adapter_off": 0.0,
+     "train_loss": 11.930181821187338,
+     "sec_train": 0.26108431816101074,
+     "sec": 1.9166841506958008,
+     "n_edited_modules": 0
+    }
+   },
+   "excluded_layers": [],
+   "n_trainable": 5632
+  },
+  "r_s0": {
+   "nights": {
+    "1": {
+     "recall": 0.0,
+     "recall_tonight": 0.0,
+     "mult": 0.0,
+     "arc": 0.0,
+     "gsm": {
+      "strict": 0.0,
+      "lenient": 0.0,
+      "mean_tokens": 16.0,
+      "median_tokens": 16.0,
+      "pct_steps": 0.0,
+      "pct_truncated": 100.0,
+      "pct_exact_marker": 0.0,
+      "mean_lines": 1.3333333333333333,
+      "n": 6,
+      "n_fail": 6,
+      "fail_categories": {
+       "truncated": 6,
+       "fact_style": 0,
+       "no_steps": 0,
+       "reasoning_wrong": 0,
+       "other": 0
+      },
+      "fail_category_pct": {
+       "truncated": 100.0,
+       "fact_style": 0.0,
+       "no_steps": 0.0,
+       "reasoning_wrong": 0.0,
+       "other": 0.0
+      }
+     },
+     "recall_adapter_off": 0.0,
+     "train_loss": 11.931066195170084,
+     "sec_train": 0.5258245468139648,
+     "sec": 1.7793426513671875,
+     "n_edited_modules": 0
+    }
+   },
+   "excluded_layers": [],
+   "n_trainable": 5632
+  },
+  "c_s0": {
+   "nights": {
+    "1": {
+     "recall": 0.0,
+     "recall_tonight": 0.0,
+     "mult": 0.0,
+     "arc": 0.0,
+     "gsm": {
+      "strict": 0.0,
+      "lenient": 0.0,
+      "mean_tokens": 16.0,
+      "median_tokens": 16.0,
+      "pct_steps": 0.0,
+      "pct_truncated": 100.0,
+      "pct_exact_marker": 0.0,
+      "mean_lines": 1.3333333333333333,
+      "n": 6,
+      "n_fail": 6,
+      "fail_categories": {
+       "truncated": 6,
+       "fact_style": 0,
+       "no_steps": 0,
+       "reasoning_wrong": 0,
+       "other": 0
+      },
+      "fail_category_pct": {
+       "truncated": 100.0,
+       "fact_style": 0.0,
+       "no_steps": 0.0,
+       "reasoning_wrong": 0.0,
+       "other": 0.0
+      }
+     },
+     "recall_adapter_off": 0.0,
+     "train_loss": 11.931716918945312,
+     "sec_train": 0.42908287048339844,
+     "sec": 1.9998853206634521,
+     "n_edited_modules": 0
+    }
+   },
+   "excluded_layers": [],
+   "n_trainable": 5632
+  }
+ },
+ "probe_hash": "32fcf5443954aba44728818a4df93b7c8d002c94809de039c8626f30ce4f9035",
+ "fact_hash": "0a51af2d6d1295bc72678f5bd874a43f68bba67dcff60b0af9febf6fedf1f6e0",
+ "extra_stats": {
+  "K": 3,
+  "replay_gsm8k_train_idx_first10": [
+   3866,
+   1492,
+   5992
+  ],
+  "replay_supervised_tokens": 274,
+  "filler_supervised_tokens": 274,
+  "replay_total_tokens": 562,
+  "filler_total_tokens": 391,
+  "dolly_candidates_no_digits": 7706,
+  "replay_example": "There are approximately 4 weeks in a month.\nThe shop owner added 3 bikes every week for 4 weeks for a total addition of 3*4 = 12 bikes\nThe shop owner now has the original number of bikes + 12 bikes\nShe sold 18 bikes within the same time frame\nShe now has a total of 45 bikes which is: the original number of bikes + 12 - 18 = 45 bikes\nThe original number of bikes = 45-12+18 = 51 bikes\nThe answer is 51.",
+  "filler_example": " work to help you recharge.  Vacations can be done by not leaving your house or by traveling to the far reaches of the planet and can range from a single day to many years depending on your situation in life.  I personally enjoy vacationing with my family as often as I can throughout the year.  Sometimes a vacation will consist of an extra day over the weekend to go camping at a park far<|im_end|>"
+ },
+ "base": {
+  "gsm_items": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "mult_items": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "arc_items": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "acc": {
+   "gsm8k_strict": 0.0,
+   "mult": 0.0,
+   "arc": 0.0
+  }
+ },
+ "base_recall": 0.0,
+ "verdict": {
+  "verdict": "FAIL",
+  "fails": [
+   "P1: r GSM8K strict retention 0.0 < 50",
+   "P2: r - c = 0.0 <= combined std 0.0"
+  ],
+  "mechanism": "H1",
+  "fix": "r",
+  "controls": [
+   "c"
+  ],
+  "best_control": "c",
+  "combined_std": 0.0,
+  "night_final": {
+   "b": {
+    "strict": [
+     0.0,
+     0.0
+    ],
+    "lenient": [
+     0.0,
+     0.0
+    ],
+    "mean_tokens": [
+     16.0,
+     0.0
+    ],
+    "pct_steps": [
+     0.0,
+     0.0
+    ],
+    "recall": [
+     0.0,
+     0.0
+    ],
+    "mult": [
+     0.0,
+     0.0
+    ],
+    "arc": [
+     0.0,
+     0.0
+    ]
+   },
+   "r": {
+    "strict": [
+     0.0,
+     0.0
+    ],
+    "lenient": [
+     0.0,
+     0.0
+    ],
+    "mean_tokens": [
+     16.0,
+     0.0
+    ],
+    "pct_steps": [
+     0.0,
+     0.0
+    ],
+    "recall": [
+     0.0,
+     0.0
+    ],
+    "mult": [
+     0.0,
+     0.0
+    ],
+    "arc": [
+     0.0,
+     0.0
+    ]
+   },
+   "c": {
+    "strict": [
+     0.0,
+     0.0
+    ],
+    "lenient": [
+     0.0,
+     0.0
+    ],
+    "mean_tokens": [
+     16.0,
+     0.0
+    ],
+    "pct_steps": [
+     0.0,
+     0.0
+    ],
+    "recall": [
+     0.0,
+     0.0
+    ],
+    "mult": [
+     0.0,
+     0.0
+    ],
+    "arc": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "b_lenient_minus_strict": 0.0,
+  "b_format_loss_parser_level": false,
+  "config": "phase2_0p5b"
+ }
+}

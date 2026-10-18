@@ -1,0 +1,316 @@
+{
+ "cfg": {
+  "model": "trl-internal-testing/tiny-Qwen2ForCausalLM-2.5",
+  "n_probe": 6,
+  "n_calib": 3,
+  "nights": 1,
+  "facts_per_night": 10,
+  "seeds": [
+   0
+  ],
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.0,
+  "lr": 0.0002,
+  "steps_per_night": 3,
+  "batch_size": 4,
+  "gsm_max_new": 16,
+  "gen_bs": 8,
+  "recall_bs": 8,
+  "gsm_parser": "v2",
+  "fact_seed": 12345,
+  "probe_seed": 1234,
+  "replay_frac": 0.2,
+  "replay_slots": [
+   1
+  ],
+  "replay_seed": 2024,
+  "filler_seed": 2025,
+  "filler_source": "databricks/databricks-dolly-15k",
+  "replay_K": 3,
+  "mechanism": "H3",
+  "arms": [
+   "b",
+   "x",
+   "rr"
+  ],
+  "fix_arm": "x",
+  "control_arms": [
+   "rr"
+  ]
+ },
+ "runs": {
+  "b_s0": {
+   "nights": {
+    "1": {
+     "recall": 0.0,
+     "recall_tonight": 0.0,
+     "mult": 0.0,
+     "arc": 0.0,
+     "gsm": {
+      "strict": 0.0,
+      "lenient": 0.0,
+      "mean_tokens": 16.0,
+      "median_tokens": 16.0,
+      "pct_steps": 0.0,
+      "pct_truncated": 100.0,
+      "pct_exact_marker": 0.0,
+      "mean_lines": 1.1666666666666667,
+      "n": 6,
+      "n_fail": 6,
+      "fail_categories": {
+       "truncated": 6,
+       "fact_style": 0,
+       "no_steps": 0,
+       "reasoning_wrong": 0,
+       "other": 0
+      },
+      "fail_category_pct": {
+       "truncated": 100.0,
+       "fact_style": 0.0,
+       "no_steps": 0.0,
+       "reasoning_wrong": 0.0,
+       "other": 0.0
+      }
+     },
+     "recall_adapter_off": 0.0,
+     "train_loss": 11.930181821187338,
+     "sec_train": 0.25914478302001953,
+     "sec": 1.6982407569885254,
+     "n_edited_modules": 0
+    }
+   },
+   "excluded_layers": [],
+   "n_trainable": 5632
+  },
+  "x_s0": {
+   "nights": {
+    "1": {
+     "recall": 0.0,
+     "recall_tonight": 0.0,
+     "mult": 0.0,
+     "arc": 0.0,
+     "gsm": {
+      "strict": 0.0,
+      "lenient": 0.0,
+      "mean_tokens": 16.0,
+      "median_tokens": 16.0,
+      "pct_steps": 0.0,
+      "pct_truncated": 100.0,
+      "pct_exact_marker": 0.0,
+      "mean_lines": 1.3333333333333333,
+      "n": 6,
+      "n_fail": 6,
+      "fail_categories": {
+       "truncated": 6,
+       "fact_style": 0,
+       "no_steps": 0,
+       "reasoning_wrong": 0,
+       "other": 0
+      },
+      "fail_category_pct": {
+       "truncated": 100.0,
+       "fact_style": 0.0,
+       "no_steps": 0.0,
+       "reasoning_wrong": 0.0,
+       "other": 0.0
+      }
+     },
+     "recall_adapter_off": 0.0,
+     "train_loss": 11.930181821187338,
+     "sec_train": 0.27104997634887695,
+     "sec": 1.861264944076538,
+     "n_edited_modules": 14
+    }
+   },
+   "excluded_layers": [],
+   "n_trainable": 5632
+  },
+  "rr_s0": {
+   "nights": {
+    "1": {
+     "recall": 0.0,
+     "recall_tonight": 0.0,
+     "mult": 0.0,
+     "arc": 0.0,
+     "gsm": {
+      "strict": 0.0,
+      "lenient": 0.0,
+      "mean_tokens": 16.0,
+      "median_tokens": 16.0,
+      "pct_steps": 0.0,
+      "pct_truncated": 100.0,
+      "pct_exact_marker": 0.0,
+      "mean_lines": 1.1666666666666667,
+      "n": 6,
+      "n_fail": 6,
+      "fail_categories": {
+       "truncated": 6,
+       "fact_style": 0,
+       "no_steps": 0,
+       "reasoning_wrong": 0,
+       "other": 0
+      },
+      "fail_category_pct": {
+       "truncated": 100.0,
+       "fact_style": 0.0,
+       "no_steps": 0.0,
+       "reasoning_wrong": 0.0,
+       "other": 0.0
+      }
+     },
+     "recall_adapter_off": 0.0,
+     "train_loss": 11.930181821187338,
+     "sec_train": 0.46735334396362305,
+     "sec": 2.062000274658203,
+     "n_edited_modules": 14
+    }
+   },
+   "excluded_layers": [],
+   "n_trainable": 5632
+  }
+ },
+ "probe_hash": "32fcf5443954aba44728818a4df93b7c8d002c94809de039c8626f30ce4f9035",
+ "fact_hash": "0a51af2d6d1295bc72678f5bd874a43f68bba67dcff60b0af9febf6fedf1f6e0",
+ "base": {
+  "gsm_items": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "mult_items": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "arc_items": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "acc": {
+   "gsm8k_strict": 0.0,
+   "mult": 0.0,
+   "arc": 0.0
+  }
+ },
+ "base_recall": 0.0,
+ "verdict": {
+  "verdict": "FAIL",
+  "fails": [
+   "P1: x GSM8K strict retention 0.0 < 50",
+   "P2: x - rr = 0.0 <= combined std 0.0"
+  ],
+  "mechanism": "H3",
+  "fix": "x",
+  "controls": [
+   "rr"
+  ],
+  "best_control": "rr",
+  "combined_std": 0.0,
+  "night_final": {
+   "b": {
+    "strict": [
+     0.0,
+     0.0
+    ],
+    "lenient": [
+     0.0,
+     0.0
+    ],
+    "mean_tokens": [
+     16.0,
+     0.0
+    ],
+    "pct_steps": [
+     0.0,
+     0.0
+    ],
+    "recall": [
+     0.0,
+     0.0
+    ],
+    "mult": [
+     0.0,
+     0.0
+    ],
+    "arc": [
+     0.0,
+     0.0
+    ]
+   },
+   "x": {
+    "strict": [
+     0.0,
+     0.0
+    ],
+    "lenient": [
+     0.0,
+     0.0
+    ],
+    "mean_tokens": [
+     16.0,
+     0.0
+    ],
+    "pct_steps": [
+     0.0,
+     0.0
+    ],
+    "recall": [
+     0.0,
+     0.0
+    ],
+    "mult": [
+     0.0,
+     0.0
+    ],
+    "arc": [
+     0.0,
+     0.0
+    ]
+   },
+   "rr": {
+    "strict": [
+     0.0,
+     0.0
+    ],
+    "lenient": [
+     0.0,
+     0.0
+    ],
+    "mean_tokens": [
+     16.0,
+     0.0
+    ],
+    "pct_steps": [
+     0.0,
+     0.0
+    ],
+    "recall": [
+     0.0,
+     0.0
+    ],
+    "mult": [
+     0.0,
+     0.0
+    ],
+    "arc": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "b_lenient_minus_strict": 0.0,
+  "b_format_loss_parser_level": false,
+  "config": "phase2_0p5b"
+ }
+}

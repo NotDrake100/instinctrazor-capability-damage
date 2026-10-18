@@ -1,0 +1,8 @@
+2026-10-17 19:04:29 ============================== mathfix phase 2 start | phase2_0p5b | mechanism H3 (override) | device cpu
+2026-10-17 19:04:37 base acc {'gsm8k_strict': 0.0, 'mult': 0.0, 'arc': 0.0} | base-correct {'gsm8k': 6, 'mult': 6, 'arc': 6} | base recall (all facts) 0.0
+2026-10-17 19:04:39 [b_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.930 | train 0s total 2s | ETA 0 min
+2026-10-17 19:04:39 RUNTIME ESTIMATE (after first night): ~0.00 h total (crude: first night is arm b; replay/filler arms cost more per step)
+2026-10-17 19:04:41 [x_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.930 | train 0s total 2s | ETA 0 min
+2026-10-17 19:04:43 [rr_s0 n1] recall 0.0 (tonight 0.0) | GSM strict 0.0 lenient 0.0 tok 16 steps 0% | mult 0.0 arc 0.0 | loss 11.930 | train 0s total 2s | ETA 0 min
+2026-10-17 19:04:43 VERDICT (phase2_0p5b, H3): FAIL | P1: x GSM8K strict retention 0.0 < 50 ; P2: x - rr = 0.0 <= combined std 0.0
+2026-10-17 19:04:43 PHASE 2 DONE in 0.2 min (this session)

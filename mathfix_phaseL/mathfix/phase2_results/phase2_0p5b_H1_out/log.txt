@@ -1,0 +1,70 @@
+2026-10-17 17:20:40 ============================== mathfix phase 2 start | phase2_0p5b | mechanism H1 (phase-1 choice: supported hypotheses ['H1']; H1 has the largest GSM8K restoration (28.3 pts)) | device cuda
+2026-10-17 17:20:51 GPU: Quadro RTX 5000
+2026-10-17 17:21:02 H1 data: {'K': 384, 'replay_gsm8k_train_idx_first10': [3866, 1492, 5992, 4756, 2498, 1646, 7299, 5953, 3374, 6231], 'replay_supervised_tokens': 34379, 'filler_supervised_tokens': 34379, 'replay_total_tokens': 78076, 'filler_total_tokens': 55414, 'dolly_candidates_no_digits': 7706}
+2026-10-17 17:22:41 base acc {'gsm8k_strict': 50.0, 'mult': 38.0, 'arc': 67.0} | base-correct {'gsm8k': 100, 'mult': 76, 'arc': 134} | base recall (all facts) 0.0
+2026-10-17 17:23:54 [b_s0 n1] recall 88.5 (tonight 88.5) | GSM strict 22.0 lenient 22.0 tok 53 steps 41% | mult 78.9 arc 76.9 | loss 0.051 | train 35s total 73s | ETA 75 min
+2026-10-17 17:23:54 RUNTIME ESTIMATE (after first night): ~2.05 h total (crude: first night is arm b; replay/filler arms cost more per step)
+2026-10-17 17:25:45 [b_s0 n2] recall 88.8 (tonight 85.0) | GSM strict 4.0 lenient 4.0 tok 28 steps 9% | mult 60.5 arc 82.8 | loss 0.026 | train 34s total 111s | ETA 93 min
+2026-10-17 17:28:02 [b_s0 n3] recall 88.3 (tonight 85.0) | GSM strict 5.0 lenient 5.0 tok 19 steps 6% | mult 60.5 arc 76.9 | loss 0.046 | train 34s total 137s | ETA 107 min
+2026-10-17 17:29:53 [b_s0 n4] recall 91.0 (tonight 83.0) | GSM strict 4.0 lenient 4.0 tok 14 steps 7% | mult 67.1 arc 76.1 | loss 0.038 | train 35s total 111s | ETA 106 min
+2026-10-17 17:31:33 [b_s0 n5] recall 88.7 (tonight 75.0) | GSM strict 5.0 lenient 5.0 tok 12 steps 2% | mult 69.7 arc 64.2 | loss 0.226 | train 35s total 100s | ETA 103 min
+2026-10-17 17:33:06 [b_s0 n6] recall 86.7 (tonight 68.5) | GSM strict 6.0 lenient 6.0 tok 11 steps 2% | mult 59.2 arc 54.5 | loss 0.055 | train 34s total 92s | ETA 99 min
+2026-10-17 17:34:27 [b_s0 n7] recall 86.9 (tonight 67.0) | GSM strict 2.0 lenient 2.0 tok 6 steps 1% | mult 56.6 arc 60.4 | loss 0.092 | train 35s total 81s | ETA 94 min
+2026-10-17 17:36:00 [r_s0 n1] recall 82.0 (tonight 82.0) | GSM strict 41.0 lenient 41.0 tok 73 steps 99% | mult 81.6 arc 89.6 | loss 0.443 | train 63s total 92s | ETA 91 min
+2026-10-17 17:37:30 [r_s0 n2] recall 76.2 (tonight 69.0) | GSM strict 36.0 lenient 36.0 tok 79 steps 100% | mult 84.2 arc 90.3 | loss 0.271 | train 63s total 90s | ETA 89 min
+2026-10-17 17:38:57 [r_s0 n3] recall 74.3 (tonight 66.0) | GSM strict 38.0 lenient 38.0 tok 76 steps 99% | mult 73.7 arc 91.8 | loss 0.154 | train 62s total 88s | ETA 86 min
+2026-10-17 17:40:37 [r_s0 n4] recall 71.0 (tonight 62.5) | GSM strict 40.0 lenient 40.0 tok 87 steps 100% | mult 69.7 arc 86.6 | loss 0.111 | train 61s total 99s | ETA 85 min
+2026-10-17 17:42:25 [r_s0 n5] recall 68.9 (tonight 49.0) | GSM strict 35.0 lenient 35.0 tok 83 steps 98% | mult 76.3 arc 86.6 | loss 0.102 | train 61s total 109s | ETA 84 min
+2026-10-17 17:44:36 [r_s0 n6] recall 68.6 (tonight 50.0) | GSM strict 36.0 lenient 36.0 tok 95 steps 100% | mult 76.3 arc 88.8 | loss 0.087 | train 62s total 130s | ETA 84 min
+2026-10-17 17:46:29 [r_s0 n7] recall 71.7 (tonight 40.5) | GSM strict 31.0 lenient 31.0 tok 90 steps 99% | mult 68.4 arc 85.8 | loss 0.084 | train 61s total 114s | ETA 83 min
+2026-10-17 17:48:26 [c_s0 n1] recall 66.0 (tonight 66.0) | GSM strict 39.0 lenient 40.0 tok 166 steps 97% | mult 64.5 arc 92.5 | loss 1.925 | train 61s total 116s | ETA 82 min
+2026-10-17 17:50:37 [c_s0 n2] recall 69.5 (tonight 66.5) | GSM strict 41.0 lenient 41.0 tok 165 steps 97% | mult 51.3 arc 89.6 | loss 1.733 | train 61s total 131s | ETA 82 min
+2026-10-17 17:52:47 [c_s0 n3] recall 66.2 (tonight 56.0) | GSM strict 38.0 lenient 38.0 tok 181 steps 90% | mult 43.4 arc 86.6 | loss 1.131 | train 61s total 130s | ETA 81 min
+2026-10-17 17:55:19 [c_s0 n4] recall 67.0 (tonight 51.5) | GSM strict 35.0 lenient 35.0 tok 179 steps 87% | mult 40.8 arc 87.3 | loss 0.851 | train 64s total 153s | ETA 82 min
+2026-10-17 17:57:41 [c_s0 n5] recall 58.0 (tonight 35.0) | GSM strict 25.0 lenient 26.0 tok 195 steps 92% | mult 35.5 arc 79.1 | loss 0.429 | train 61s total 142s | ETA 81 min
+2026-10-17 18:00:41 [c_s0 n6] recall 63.3 (tonight 39.5) | GSM strict 44.0 lenient 45.0 tok 177 steps 94% | mult 31.6 arc 79.1 | loss 0.319 | train 61s total 180s | ETA 82 min
+2026-10-17 18:03:24 [c_s0 n7] recall 61.6 (tonight 31.0) | GSM strict 22.0 lenient 22.0 tok 134 steps 77% | mult 31.6 arc 80.6 | loss 0.216 | train 61s total 163s | ETA 81 min
+2026-10-17 18:04:40 [b_s1 n1] recall 85.5 (tonight 85.5) | GSM strict 1.0 lenient 1.0 tok 12 steps 5% | mult 69.7 arc 82.1 | loss 0.018 | train 34s total 76s | ETA 78 min
+2026-10-17 18:05:52 [b_s1 n2] recall 84.0 (tonight 82.0) | GSM strict 1.0 lenient 1.0 tok 7 steps 1% | mult 65.8 arc 63.4 | loss 0.011 | train 35s total 72s | ETA 75 min
+2026-10-17 18:07:58 [b_s1 n3] recall 89.0 (tonight 83.5) | GSM strict 1.0 lenient 1.0 tok 14 steps 5% | mult 68.4 arc 65.7 | loss 0.034 | train 34s total 126s | ETA 74 min
+2026-10-17 18:09:58 [b_s1 n4] recall 89.2 (tonight 81.5) | GSM strict 0.0 lenient 0.0 tok 8 steps 2% | mult 63.2 arc 73.1 | loss 0.022 | train 34s total 120s | ETA 72 min
+2026-10-17 18:11:44 [b_s1 n5] recall 86.6 (tonight 70.0) | GSM strict 0.0 lenient 0.0 tok 9 steps 1% | mult 65.8 arc 73.1 | loss 0.070 | train 36s total 106s | ETA 70 min
+2026-10-17 18:13:27 [b_s1 n6] recall 85.3 (tonight 64.5) | GSM strict 1.0 lenient 1.0 tok 10 steps 2% | mult 57.9 arc 64.9 | loss 0.068 | train 34s total 104s | ETA 68 min
+2026-10-17 18:15:33 [b_s1 n7] recall 84.4 (tonight 60.0) | GSM strict 0.0 lenient 0.0 tok 9 steps 1% | mult 60.5 arc 55.2 | loss 0.147 | train 34s total 125s | ETA 66 min
+2026-10-17 18:17:08 [r_s1 n1] recall 72.0 (tonight 72.0) | GSM strict 37.0 lenient 37.0 tok 78 steps 99% | mult 82.9 arc 92.5 | loss 0.376 | train 61s total 95s | ETA 64 min
+2026-10-17 18:18:45 [r_s1 n2] recall 74.8 (tonight 69.5) | GSM strict 35.0 lenient 35.0 tok 85 steps 100% | mult 77.6 arc 92.5 | loss 0.263 | train 64s total 97s | ETA 62 min
+2026-10-17 18:20:54 [r_s1 n3] recall 72.2 (tonight 61.5) | GSM strict 38.0 lenient 38.0 tok 80 steps 99% | mult 80.3 arc 95.5 | loss 0.168 | train 62s total 129s | ETA 60 min
+2026-10-17 18:22:28 [r_s1 n4] recall 69.4 (tonight 54.0) | GSM strict 37.0 lenient 37.0 tok 75 steps 98% | mult 82.9 arc 90.3 | loss 0.103 | train 61s total 94s | ETA 58 min
+2026-10-17 18:24:02 [r_s1 n5] recall 69.7 (tonight 51.5) | GSM strict 40.0 lenient 40.0 tok 81 steps 99% | mult 82.9 arc 89.6 | loss 0.085 | train 62s total 94s | ETA 56 min
+2026-10-17 18:25:46 [r_s1 n6] recall 68.2 (tonight 51.0) | GSM strict 44.0 lenient 44.0 tok 91 steps 98% | mult 72.4 arc 88.1 | loss 0.078 | train 62s total 104s | ETA 54 min
+2026-10-17 18:27:38 [r_s1 n7] recall 67.9 (tonight 43.0) | GSM strict 33.0 lenient 33.0 tok 75 steps 99% | mult 59.2 arc 87.3 | loss 0.089 | train 62s total 112s | ETA 52 min
+2026-10-17 18:29:34 [c_s1 n1] recall 58.5 (tonight 58.5) | GSM strict 39.0 lenient 39.0 tok 155 steps 98% | mult 77.6 arc 93.3 | loss 1.927 | train 61s total 116s | ETA 50 min
+2026-10-17 18:31:42 [c_s1 n2] recall 68.5 (tonight 61.5) | GSM strict 33.0 lenient 33.0 tok 184 steps 95% | mult 72.4 arc 88.8 | loss 1.497 | train 61s total 128s | ETA 48 min
+2026-10-17 18:34:08 [c_s1 n3] recall 68.7 (tonight 57.5) | GSM strict 29.0 lenient 29.0 tok 169 steps 90% | mult 61.8 arc 81.3 | loss 1.133 | train 62s total 146s | ETA 47 min
+2026-10-17 18:36:22 [c_s1 n4] recall 62.1 (tonight 52.0) | GSM strict 29.0 lenient 29.0 tok 167 steps 88% | mult 60.5 arc 83.6 | loss 0.729 | train 61s total 134s | ETA 45 min
+2026-10-17 18:38:31 [c_s1 n5] recall 60.4 (tonight 42.5) | GSM strict 25.0 lenient 25.0 tok 167 steps 87% | mult 60.5 arc 82.8 | loss 0.535 | train 62s total 129s | ETA 44 min
+2026-10-17 18:40:49 [c_s1 n6] recall 59.4 (tonight 41.5) | GSM strict 18.0 lenient 18.0 tok 173 steps 83% | mult 63.2 arc 81.3 | loss 0.402 | train 61s total 138s | ETA 42 min
+2026-10-17 18:43:30 [c_s1 n7] recall 55.1 (tonight 31.0) | GSM strict 23.0 lenient 23.0 tok 193 steps 89% | mult 59.2 arc 86.6 | loss 0.217 | train 65s total 161s | ETA 40 min
+2026-10-17 18:44:51 [b_s2 n1] recall 84.0 (tonight 84.0) | GSM strict 1.0 lenient 1.0 tok 10 steps 2% | mult 78.9 arc 84.3 | loss 0.035 | train 35s total 81s | ETA 38 min
+2026-10-17 18:45:48 [b_s2 n2] recall 89.5 (tonight 86.5) | GSM strict 3.0 lenient 3.0 tok 7 steps 2% | mult 63.2 arc 82.8 | loss 0.048 | train 34s total 57s | ETA 36 min
+2026-10-17 18:46:59 [b_s2 n3] recall 89.5 (tonight 85.0) | GSM strict 1.0 lenient 1.0 tok 8 steps 2% | mult 63.2 arc 86.6 | loss 0.027 | train 35s total 70s | ETA 34 min
+2026-10-17 18:48:08 [b_s2 n4] recall 87.9 (tonight 79.0) | GSM strict 1.0 lenient 1.0 tok 7 steps 1% | mult 48.7 arc 88.8 | loss 0.096 | train 34s total 70s | ETA 32 min
+2026-10-17 18:50:07 [b_s2 n5] recall 85.5 (tonight 72.0) | GSM strict 2.0 lenient 2.0 tok 14 steps 2% | mult 47.4 arc 72.4 | loss 0.100 | train 34s total 119s | ETA 30 min
+2026-10-17 18:51:23 [b_s2 n6] recall 87.2 (tonight 72.0) | GSM strict 3.0 lenient 3.0 tok 7 steps 1% | mult 19.7 arc 71.6 | loss 0.107 | train 36s total 76s | ETA 28 min
+2026-10-17 18:52:31 [b_s2 n7] recall 89.6 (tonight 71.0) | GSM strict 3.0 lenient 3.0 tok 5 steps 3% | mult 40.8 arc 68.7 | loss 0.073 | train 35s total 68s | ETA 26 min
+2026-10-17 18:54:13 [r_s2 n1] recall 77.5 (tonight 77.5) | GSM strict 40.0 lenient 40.0 tok 78 steps 100% | mult 88.2 arc 96.3 | loss 0.411 | train 67s total 103s | ETA 24 min
+2026-10-17 18:55:45 [r_s2 n2] recall 82.2 (tonight 78.0) | GSM strict 40.0 lenient 40.0 tok 89 steps 98% | mult 75.0 arc 94.0 | loss 0.315 | train 62s total 92s | ETA 22 min
+2026-10-17 18:57:58 [r_s2 n3] recall 77.3 (tonight 66.0) | GSM strict 36.0 lenient 36.0 tok 95 steps 99% | mult 80.3 arc 90.3 | loss 0.170 | train 62s total 133s | ETA 20 min
+2026-10-17 19:00:24 [r_s2 n4] recall 76.2 (tonight 64.0) | GSM strict 42.0 lenient 42.0 tok 92 steps 99% | mult 68.4 arc 91.8 | loss 0.090 | train 62s total 146s | ETA 18 min
+2026-10-17 19:01:56 [r_s2 n5] recall 71.7 (tonight 53.5) | GSM strict 42.0 lenient 42.0 tok 82 steps 99% | mult 75.0 arc 88.8 | loss 0.120 | train 60s total 92s | ETA 17 min
+2026-10-17 19:03:42 [r_s2 n6] recall 75.2 (tonight 58.5) | GSM strict 42.0 lenient 42.0 tok 84 steps 99% | mult 77.6 arc 90.3 | loss 0.080 | train 63s total 106s | ETA 15 min
+2026-10-17 19:05:33 [r_s2 n7] recall 73.3 (tonight 51.0) | GSM strict 30.0 lenient 30.0 tok 82 steps 100% | mult 76.3 arc 92.5 | loss 0.077 | train 61s total 111s | ETA 13 min
+2026-10-17 19:08:02 [c_s2 n1] recall 59.5 (tonight 59.5) | GSM strict 46.0 lenient 46.0 tok 174 steps 97% | mult 59.2 arc 95.5 | loss 2.050 | train 61s total 149s | ETA 11 min
+2026-10-17 19:10:54 [c_s2 n2] recall 77.2 (tonight 74.0) | GSM strict 34.0 lenient 34.0 tok 148 steps 94% | mult 53.9 arc 86.6 | loss 1.360 | train 61s total 172s | ETA 9 min
+2026-10-17 19:13:04 [c_s2 n3] recall 71.2 (tonight 62.5) | GSM strict 26.0 lenient 25.0 tok 164 steps 93% | mult 51.3 arc 85.1 | loss 1.206 | train 61s total 130s | ETA 7 min
+2026-10-17 19:15:28 [c_s2 n4] recall 65.8 (tonight 51.5) | GSM strict 36.0 lenient 34.0 tok 184 steps 91% | mult 57.9 arc 84.3 | loss 0.727 | train 63s total 144s | ETA 6 min
+2026-10-17 19:17:25 [c_s2 n5] recall 62.8 (tonight 41.5) | GSM strict 22.0 lenient 22.0 tok 144 steps 85% | mult 44.7 arc 82.8 | loss 0.428 | train 61s total 118s | ETA 4 min
+2026-10-17 19:19:39 [c_s2 n6] recall 59.3 (tonight 42.5) | GSM strict 32.0 lenient 32.0 tok 148 steps 90% | mult 43.4 arc 80.6 | loss 0.257 | train 60s total 134s | ETA 2 min
+2026-10-17 19:22:12 [c_s2 n7] recall 60.9 (tonight 36.0) | GSM strict 35.0 lenient 36.0 tok 188 steps 88% | mult 36.8 arc 77.6 | loss 0.197 | train 61s total 153s | ETA 0 min
+2026-10-17 19:22:12 VERDICT (phase2_0p5b, H1): FAIL | P1: r GSM8K strict retention 31.3 < 50 ; P2: r - c = 4.7 <= combined std 7.4 ; P3: |recall r - b| = 16.0 > 5
+2026-10-17 19:22:12 PHASE 2 DONE in 121.5 min (this session)
