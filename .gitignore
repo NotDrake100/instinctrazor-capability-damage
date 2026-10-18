@@ -1,3 +1,6 @@
 __pycache__/
 data/
 InstinctRazor/
+results_qwen05b/weight_bank/
+results_qwen05b/smoke_bank/
+results_qwen05b/smoke_unittest/
