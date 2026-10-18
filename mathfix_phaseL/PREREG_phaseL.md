@@ -153,4 +153,37 @@ One CPU VM, 4 cores, no GPU, no paid compute. Accuracy and honesty first. A clea
 
 ## Appendix A — timing pilot and N choice
 
-*(empty at first commit; to be filled and committed after the pilot, still before any test-set eval)*
+Written 2026-10-18 08:14:37 +0000 after the timing pilot and **before any test-set eval**.
+Prereg commit at first lock: see git history of this file before this appendix.
+
+### Measured (real Qwen2.5-0.5B-Instruct, CPU, not test-set)
+
+| quantity | value |
+|---|---|
+| device | cpu |
+| n_layers | 24 |
+| n_cpu | 4 |
+| sec / train step (4 steps incl. first) | 5.9868 |
+| gen tokens / sec (4 prompts, max_new=64) | 33.8043 |
+| tokens produced in that gen | 256 |
+| gen wall sec | 7.57 |
+| second gen (2 prompts, max_new=128) tokens / sec | 20.2871 |
+| pilot wall sec | 46.1 |
+
+### Predicted full-plan wall (from those rates; not measured)
+
+| N | predicted hours | train h | base GSM h | calib h | test GSM h | recall h |
+|---|---|---|---|---|---|---|
+| 1 | 3.66 | 0.60 | 0.36 | 0.80 | 1.26 | 0.47 |
+| 2 | 4.73 | 1.20 | 0.36 | 0.80 | 1.26 | 0.95 |
+
+Prediction assumptions (timing only, never used as experimental numbers): base mean 218 tokens;
+calib 20 layers × 15 tok + 4 layers × 180 tok; test mix short/long as in `predict_hours`.
+
+### N choice
+
+**N = 2**
+
+Rule applied: default N=2; if predicted wall for the full plan exceeds ~5 h, set N=1.
+N=2 predicted 4.73 h, which is
+at or below the 5 h cutoff.

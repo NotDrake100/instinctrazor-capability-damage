@@ -1,3 +1,8 @@
 __pycache__/
 data/
 InstinctRazor/
+mathfix_phaseL/work/
+results/phaseL/adapters/
+*.pt
+*.bin
+hf_cache/

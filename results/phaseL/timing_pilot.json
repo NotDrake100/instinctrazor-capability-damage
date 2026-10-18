@@ -1,0 +1,52 @@
+{
+ "device": "cpu",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "n_layers": 24,
+ "n_cpu": 4,
+ "train_steps_timed": 4,
+ "train_loss_last10mean": 4.496480464935303,
+ "sec_train_4steps": 23.94720458984375,
+ "sec_per_train_step": 5.9868011474609375,
+ "gen_prompts": 4,
+ "gen_max_new": 64,
+ "gen_n_tokens": 256,
+ "gen_sec": 7.573003768920898,
+ "gen_tokens_per_sec": 33.804287943260626,
+ "gen2_max_new": 128,
+ "gen2_n_tokens": 237,
+ "gen2_sec": 11.68230414390564,
+ "sample_out0_head": "12.\n\nExplanation: Since Natalia sold clips to 48 of her friends in April, we can conclude that each friend bought 48/4 = 12 clips. After selling half as many clips in May, Natalia still had 12 * 2 = 2",
+ "sample_ntok": [
+  64,
+  64,
+  64,
+  64
+ ],
+ "wall_sec": 46.07165265083313,
+ "predicted_hours": {
+  "1": {
+   "hours": 3.658429791333361,
+   "parts_sec": {
+    "train": 2155.2484130859375,
+    "base_gsm": 1289.7772043943405,
+    "calib_scan": 2896.6739416122437,
+    "test_gsm": 4524.721841700375,
+    "recall": 1703.9258480072021,
+    "overhead": 600
+   }
+  },
+  "2": {
+   "hours": 4.730422641637011,
+   "parts_sec": {
+    "train": 4310.496826171875,
+    "base_gsm": 1289.7772043943405,
+    "calib_scan": 2896.6739416122437,
+    "test_gsm": 4524.721841700375,
+    "recall": 3407.8516960144043,
+    "overhead": 600
+   }
+  }
+ },
+ "chosen_N": 2,
+ "decision_rule": "N=2 unless predicted wall for the full plan exceeds ~5 h, then N=1"
+}
